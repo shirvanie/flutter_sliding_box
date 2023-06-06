@@ -1,0 +1,21 @@
+name: flutter_sliding_box
+version: 1.0.0
+repository: https://github.com/shirvanie/flutter_sliding_box/tree/master/
+issue_tracker: https://github.com/shirvanie/flutter_sliding_box/issues
+homepage: https://github.com/shirvanie/flutter_sliding_box
+description: A draggable flutter widget that makes it easier to use a sliding box for all platform. Boxes can be customized with your content and placed in your app.
+email: ihamedshirvani@gmail.com
+
+environment:
+  sdk: '>=3.0.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
