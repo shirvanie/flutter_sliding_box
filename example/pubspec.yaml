@@ -1,0 +1,30 @@
+name: flutter_sliding_box_example
+description: Demonstrates  how to use the flutter_sliding_box plugin.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_sliding_box: ^1.0.1
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/map/
+    - assets/images/music_player/
+    - assets/images/share/
