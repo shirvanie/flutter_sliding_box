@@ -1,4 +1,8 @@
 
+## [1.0.4] - 28 June, 2023
+- Update example
+
+
 ## [1.0.3] - 28 June, 2023
 - Add `action` widget list to `BackdropAppBar`
 - Remove the `icon` widget from `SearchBox`
