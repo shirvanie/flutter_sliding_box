@@ -422,44 +422,43 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
         backdrop: Backdrop(
           color: Colors.blueGrey,
           appBar: BackdropAppBar(
-            searchBox: SearchBox(
-            controller: textEditingController,
-            body: Center(
-              child: MaterialButton(
-                child: Text("Hide SearchBox"),
-                onPressed: () {
-                  boxController.hideSearchBox();
-                  boxController.closeBox();
-                },
-                color: Colors.blueGrey,
-                textColor: Colors.white,
-              ),
-            ),
-            draggableBody: true,
-            ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: SizedBox.fromSize(
-                  size: const Size.fromRadius(25),
-                  child: IconButton(
-                    iconSize: 25,
-                    icon: Icon(Icons.search, color: Colors.white, size: 27,),
+              searchBox: SearchBox(
+                controller: textEditingController,
+                body: Center(
+                  child: MaterialButton(
+                    child: Text("Hide SearchBox"),
                     onPressed: () {
-                      textEditingController.text = "";
-                      boxController.showSearchBox();
+                      boxController.hideSearchBox();
+                      boxController.closeBox();
                     },
+                    color: Colors.blueGrey,
+                    textColor: Colors.white,
                   ),
                 ),
+                draggableBody: true,
               ),
-            ]
+              actions: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  child: SizedBox.fromSize(
+                    size: const Size.fromRadius(25),
+                    child: IconButton(
+                      iconSize: 25,
+                      icon: Icon(Icons.search, color: Colors.white, size: 27,),
+                      onPressed: () {
+                        textEditingController.text = "";
+                        boxController.showSearchBox();
+                      },
+                    ),
+                  ),
+                ),
+              ]
           ),
           body: SingleChildScrollView(
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   MaterialButton(
