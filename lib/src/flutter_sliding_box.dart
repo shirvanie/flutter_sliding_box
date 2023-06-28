@@ -1,6 +1,6 @@
 /*
-© 2023, Hamed Shirvani. All rights reserved.
-Im Hamed Shirvani, i build and defines this plugin in 5/29/23
+© 2023, Hamed Shirvanie. All rights reserved.
+Im Hamed Shirvanie, i build and defines this plugin in 5/29/23
 LICENSE: https://github.com/shirvanie/flutter_sliding_box/blob/master/LICENSE
 */
 
@@ -459,17 +459,15 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                     widget.backdrop!.appBar!.title!,
                                 ],
                               ),
-                              if(widget.backdrop?.appBar?.
-                              searchBox != null) Container(
-                                margin: const EdgeInsets.only(right: 10),
-                                child: IconButton(
-                                  splashColor: const Color(0xff0694d7),
-                                  icon: widget.backdrop!.appBar!.searchBox!
-                                      .icon!,
-                                  onPressed: () {
-                                    widget.controller!.showSearchBox();
-                                  },
-                                ),
+                              if(widget.backdrop?.appBar?.actions != null) Row(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: Theme
+                                    .of(widget.context)
+                                    .useMaterial3
+                                    ? CrossAxisAlignment.center
+                                    : CrossAxisAlignment.stretch,
+                                children: widget.backdrop!.appBar!
+                                    .actions!,
                               ),
                             ],
                           ),
@@ -977,6 +975,12 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     return _boxState!._isBoxOpen;
   }
 
+  /// Returns whether or not the search box is visible
+  bool get isSearchBoxVisible {
+    assert(isAttached, "BoxController must be attached to a SlidingBox");
+    return _boxState!._isSearchBoxVisible;
+  }
+
   /// Returns whether or not the box is close or collapsed
   bool get isBoxClosed {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1084,11 +1088,15 @@ class BackdropAppBar {
   /// if non-null, an search Icon displayed on topRight of the backdrop
   final SearchBox? searchBox;
 
+  /// A list of Widgets that is placed on the topRight of the [SlidingBox.backdrop]
+  final List<Widget>? actions;
+
   const BackdropAppBar({
     this.title,
     this.leading,
     this.decoration,
     this.searchBox,
+    this.actions,
   });
 }
 
@@ -1098,14 +1106,10 @@ class SearchBox {
   /// gets a [TextEditingController]
   final TextEditingController controller;
 
-  /// A Widget that is placed in topRight of the [SlidingBox.backdrop]
-  final Widget? icon;
-
   /// A `Icon` Widget that is placed in left of the search box text field
   final Icon? leading;
 
-  /// The `color` to fill the background of the [SlidingBox.backdrop] and
-  /// text field
+  /// The `color` to fill the background of the [SearchBox]
   final Color? color;
 
   /// The `decoration` to show around the search box text field
@@ -1127,7 +1131,6 @@ class SearchBox {
 
   const SearchBox({
     required this.controller,
-    this.icon = const Icon(Icons.search),
     this.leading = const Icon(Icons.arrow_back_ios_rounded),
     this.color = Colors.white,
     this.inputDecoration = const InputDecoration(

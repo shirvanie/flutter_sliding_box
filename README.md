@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shirvanie/flutter_sliding_box/blob/master/LICENSE)
 [![likes](https://img.shields.io/pub/likes/flutter_sliding_box?logo=flutter)](https://pub.dev/packages/flutter_sliding_box/score)
 
-A draggable flutter widget that makes it easier to use a sliding box for all platform. Boxes can be customized with your content and placed in your app.
+A draggable flutter widget that makes it easier to use a SlidingBox panel for all platform. Boxes can be customized with your content and placed in your app.
 <br><br>
 To see examples of the following SlidingBoxes on the device or simulator:
 ```bash
@@ -54,7 +54,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.0.2
+  flutter_sliding_box: ^1.0.3
 ```
 
 import the plugin package to your dart code
@@ -189,6 +189,7 @@ Manually changing the properties of the `BackdropAppBar`
 | `leading`    | A `Icon` Widget that is placed in left of the `title`                                                                        |
 | `decoration` | The decoration to paint behind the child                                                                                     |
 | `searchBox`  | An search box to display at the top of the `backdrop`. If non-null, an search `Icon` displayed on topRight of the `backdrop` |
+| `actions`    | A list of Widgets that is placed on the topRight of the `backdrop`                                                           |
 
 
 <p>
@@ -226,13 +227,28 @@ SlidingBox appBar includes searchBox: `SearchBox`
             leading: Icon(Icons.menu, color: Colors.white, size: 27,),
             searchBox: SearchBox(
               controller: textEditingController,
-              icon: Icon(Icons.search, color: Colors.white, size: 27,),
               body: Center(
                 child: Text("This is the search box body widget",
                   style: TextStyle(color: Colors.black),
                 ),
               ),
             ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(25),
+                  child: IconButton(
+                    iconSize: 25,
+                    icon: Icon(Icons.search, color: Colors.white, size: 27,),
+                    onPressed: () {
+                      textEditingController.text = "";
+                      boxController.showSearchBox();
+                    },
+                  ),
+                ),
+              ),
+            ]
           ),
         ),
       ),
@@ -249,9 +265,8 @@ Manually changing the properties of the `SearchBox`
 | Properties        | Description                                                                                                                                                                                               |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `controller`      | It can be used to control the state of search box text field. Gets a `TextEditingController`                                                                                                              |
-| `icon`            | A Widget that is placed in topRight of the `backdrop` app bar                                                                                                                                             |
 | `leading`         | A `Icon` Widget that is placed in left of the search box text field                                                                                                                                       |
-| `color`           | The `color` to fill the background of the search box and text field                                                                                                                                       |
+| `color`           | The `color` to fill the background of the `SearchBox`                                                                                                                                                     |
 | `inputDecoration` | The `decoration` to show around the search box text field                                                                                                                                                 |
 | `borderRadius`    | The corners of the search box are rounded by this                                                                                                                                                         |
 | `style`           | The `style` to use for the text being edited                                                                                                                                                              |
@@ -357,17 +372,18 @@ SlidingBox includes style: `boxUnderBox` or `boxShadow`
 
 Manually changing the state of the `SlidingBox`. For better performance, use a `BoxController` as controller (recommended).
 
-| Properties      | Data Type | Description                                                                                                                                                           |
-|-----------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `isAttached`    | `bool`    | Determine if the `boxController` is attached to an instance of the `SlidingBox` (this property must be `true` before any other `BoxController` functions can be used) |
-| `isBoxOpen`     | `bool`    | Returns whether or not the box is `open`                                                                                                                              |
-| `isBoxClosed`   | `bool`    | Returns whether or not the box is `close`                                                                                                                             |
-| `isBoxVisible`  | `bool`    | Returns whether or not the box is `visible`                                                                                                                           |
-| `getPosition`   | `bool`    | Returns current box position (a value between `0.0` and `1.0`)                                                                                                        |
-| `minHeight`     | `double`  | Returns current box `minHeight`                                                                                                                                       |
-| `maxHeight`     | `double`  | Returns current box `maxHeight`                                                                                                                                       |
-| `boxWidth`      | `double`  | Returns current box `width`                                                                                                                                           |
-| `backdropWidth` | `double`  | Returns current backdrop `width`                                                                                                                                      |
+| Properties           | Data Type | Description                                                                                                                                                           |
+|----------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `isAttached`         | `bool`    | Determine if the `boxController` is attached to an instance of the `SlidingBox` (this property must be `true` before any other `BoxController` functions can be used) |
+| `isBoxOpen`          | `bool`    | Returns whether or not the box is `open`                                                                                                                              |
+| `isBoxClosed`        | `bool`    | Returns whether or not the box is `close`                                                                                                                             |
+| `isBoxVisible`       | `bool`    | Returns whether or not the box is `visible`                                                                                                                           |
+| `isSearchBoxVisible` | `bool`    | Returns whether or not the search box is `visible`                                                                                                                    |
+| `getPosition`        | `bool`    | Returns current box position (a value between `0.0` and `1.0`)                                                                                                        |
+| `minHeight`          | `double`  | Returns current box `minHeight`                                                                                                                                       |
+| `maxHeight`          | `double`  | Returns current box `maxHeight`                                                                                                                                       |
+| `boxWidth`           | `double`  | Returns current box `width`                                                                                                                                           |
+| `backdropWidth`      | `double`  | Returns current backdrop `width`                                                                                                                                      |
 
 | Methods           | Return Type    | Description                                                                    |
 |-------------------|----------------|--------------------------------------------------------------------------------|
@@ -381,12 +397,15 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
 | `setSearchBody()` | `Future<void>` | Sets the search box `body` content                                             |
 
 <p>
- <img width="220px" alt="BoxController" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller.png"/>
+ <img width="220px" alt="BoxController" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller1.png"/>
+ 
+ <img width="220px" alt="BoxController ShowSearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller2.png"/>
 </p>
 
 ```dart
   BoxController boxController = new BoxController();
-  
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -394,39 +413,87 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
         context: context,
         controller: boxController,
         minHeight: 200,
-        maxHeight: 400,
-        body: Center(
+        maxHeight: MediaQuery.of(context).size.height - 100,
+        body: const Center(
           child: Text("This is the sliding box widget",
             style: TextStyle(color: Colors.black),),
         ),
+        collapsed: true,
         backdrop: Backdrop(
           color: Colors.blueGrey,
-          body: Container(
-            width: MediaQuery.of(context).size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                MaterialButton(
-                  child: Text("Open"),
-                  onPressed: () => boxController.openBox(),
-                  color: Colors.white,
+          appBar: BackdropAppBar(
+            searchBox: SearchBox(
+            controller: textEditingController,
+            body: Center(
+              child: MaterialButton(
+                child: Text("Hide SearchBox"),
+                onPressed: () {
+                  boxController.hideSearchBox();
+                  boxController.closeBox();
+                },
+                color: Colors.blueGrey,
+                textColor: Colors.white,
+              ),
+            ),
+            draggableBody: true,
+            ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(25),
+                  child: IconButton(
+                    iconSize: 25,
+                    icon: Icon(Icons.search, color: Colors.white, size: 27,),
+                    onPressed: () {
+                      textEditingController.text = "";
+                      boxController.showSearchBox();
+                    },
+                  ),
                 ),
-                MaterialButton(
-                  child: Text("Close"),
-                  onPressed: () => boxController.closeBox(),
-                  color: Colors.white,
-                ),
-                MaterialButton(
-                  child: Text("Show"),
-                  onPressed: () => boxController.showBox(),
-                  color: Colors.white,
-                ),
-                MaterialButton(
-                  child: Text("Hide"),
-                  onPressed: () => boxController.hideBox(),
-                  color: Colors.white,
-                ),
-              ],
+              ),
+            ]
+          ),
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  MaterialButton(
+                    child: Text("Open"),
+                    onPressed: () => boxController.openBox(),
+                    color: Colors.white,
+                  ),
+                  MaterialButton(
+                    child: Text("Close"),
+                    onPressed: () => boxController.closeBox(),
+                    color: Colors.white,
+                  ),
+                  MaterialButton(
+                    child: Text("Show"),
+                    onPressed: () => boxController.showBox(),
+                    color: Colors.white,
+                  ),
+                  MaterialButton(
+                    child: Text("Hide"),
+                    onPressed: () => boxController.hideBox(),
+                    color: Colors.white,
+                  ),
+                  MaterialButton(
+                    child: Text("Show SearchBox"),
+                    onPressed: () => boxController.showSearchBox(),
+                    color: Colors.white,
+                  ),
+                  MaterialButton(
+                    child: Text("Hide SearchBox"),
+                    onPressed: () => boxController.hideSearchBox(),
+                    color: Colors.white,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
