@@ -84,29 +84,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           appBar: BackdropAppBar(
             searchBox: SearchBox(
               controller: textEditingController,
-              icon: Container(
-                padding: const EdgeInsets.all(7),
-                decoration: BoxDecoration(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .primary,
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(50),
-                        spreadRadius: 2,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      ),
-                    ]
-                ),
-                child: Icon(Icons.search_rounded, size: 27,
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onPrimary),
-              ),
               color: Theme
                   .of(context)
                   .colorScheme
@@ -125,6 +102,41 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     fontSize: 20),),),
               draggableBody: true,
             ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                decoration: BoxDecoration(
+                    color: Theme
+                        .of(context)
+                        .colorScheme
+                        .primary,
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withAlpha(50),
+                        spreadRadius: 2,
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ]
+                ),
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(20),
+                  child: IconButton(
+                    iconSize: 25,
+                    icon: Icon(Icons.search_rounded, size: 27,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .onPrimary),
+                    onPressed: () {
+                      textEditingController.text = "";
+                      boxController.showSearchBox();
+                    },
+                  ),
+                ),
+              ),
+            ]
           ),
         ),
         body:_body(),

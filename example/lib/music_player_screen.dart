@@ -114,11 +114,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             ),
             searchBox: SearchBox(
               controller: textEditingController,
-              icon: Icon(Icons.search_rounded,
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground, size: 27,),
               color: Theme
                   .of(context)
                   .colorScheme
@@ -137,6 +132,26 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     fontSize: 20),),),
               draggableBody: true,
             ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: SizedBox.fromSize(
+                  size: const Size.fromRadius(25),
+                  child: IconButton(
+                    iconSize: 27,
+                    icon: Icon(Icons.search_rounded,
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .onPrimary,),
+                    onPressed: () {
+                      textEditingController.text = "";
+                      boxController.showSearchBox();
+                    },
+                  ),
+                ),
+              ),
+            ]
           ),
         ),
         body: _body(),
