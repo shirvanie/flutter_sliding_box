@@ -1,6 +1,6 @@
 
 ## [1.0.5] - 1 July, 2023
-- Add draggableIcon
+- Add `draggableIcon`
 
 
 ## [1.0.4] - 28 June, 2023
