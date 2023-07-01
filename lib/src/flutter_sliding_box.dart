@@ -53,15 +53,19 @@ class SlidingBox extends StatefulWidget {
   /// the sliding box cannot be dragged up or down
   final bool? draggable;
 
-  /// The [color] of the [draggable] icon.
+  /// A Icon Widget that is placed in top of the box.
+  /// Gets a IconData
+  final IconData? draggableIcon;
+
+  /// The color of the [draggableIcon].
   /// the position of the icon is top of the box
   final Color? draggableIconColor;
 
-  /// If set to false, the [draggable] icon hides. Use the controller to
+  /// If set to false, the [draggableIcon] hides. Use the controller to
   /// open and close sliding box by taps.
   final bool? draggableIconEnabled;
 
-  /// The color to fill the background of the [draggable] icon.
+  /// The color to fill the background of the [draggableIcon] icon.
   /// the position of the icon is top of the box
   final Color? draggableIconBackColor;
 
@@ -120,6 +124,7 @@ class SlidingBox extends StatefulWidget {
     this.bodyBuilder,
     this.physics = const BouncingScrollPhysics(),
     this.draggable = true,
+    this.draggableIcon = Icons.remove_rounded,
     this.draggableIconColor = const Color(0xff9a9a9a),
     this.draggableIconEnabled = true,
     this.draggableIconBackColor = const Color(0x22777777),
@@ -568,7 +573,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                               color: widget.draggableIconBackColor,
                               child: Transform(
                                 transform: Matrix4.translationValues(0, -15, 0),
-                                child: Icon(Icons.remove_rounded,
+                                child: Icon(widget.draggableIcon,
                                   color: widget.draggableIconColor, size: 62,),
                             ),
                           ),
