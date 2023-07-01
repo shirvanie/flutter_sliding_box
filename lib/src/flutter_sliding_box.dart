@@ -43,7 +43,7 @@ class SlidingBox extends StatefulWidget {
   /// and current box position. If [body] and [bodyBuilder] are both non-null,
   /// [body] will be used
   final Widget Function(ScrollController scrollController, double boxPosition,)?
-    bodyBuilder;
+  bodyBuilder;
 
   /// Gets a ScrollPhysic, the [physics] determines how the scroll view
   /// continues to animate after the user stops dragging the scroll view
@@ -53,15 +53,19 @@ class SlidingBox extends StatefulWidget {
   /// the sliding box cannot be dragged up or down
   final bool? draggable;
 
-  /// The [color] of the [draggable] icon.
+  /// A Icon Widget that is placed in top of the box.
+  /// Gets a IconData
+  final IconData? draggableIcon;
+
+  /// The color of the [draggableIcon].
   /// the position of the icon is top of the box
   final Color? draggableIconColor;
 
-  /// If set to false, the [draggable] icon hides. Use the controller to
+  /// If set to false, the [draggableIcon] hides. Use the controller to
   /// open and close sliding box by taps.
   final bool? draggableIconEnabled;
 
-  /// The color to fill the background of the [draggable] icon.
+  /// The color to fill the background of the [draggableIcon] icon.
   /// the position of the icon is top of the box
   final Color? draggableIconBackColor;
 
@@ -120,6 +124,7 @@ class SlidingBox extends StatefulWidget {
     this.bodyBuilder,
     this.physics = const BouncingScrollPhysics(),
     this.draggable = true,
+    this.draggableIcon = Icons.remove_rounded,
     this.draggableIconColor = const Color(0xff9a9a9a),
     this.draggableIconEnabled = true,
     this.draggableIconBackColor = const Color(0x22777777),
@@ -223,8 +228,8 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     _scrollController = ScrollController();
     _isBoxOpen = !widget.collapsed!;
     _searchBody = (widget.backdrop?.appBar?.searchBox?.body != null)
-      ? widget.backdrop!.appBar!.searchBox!.body!
-      : const SizedBox.shrink();
+        ? widget.backdrop!.appBar!.searchBox!.body!
+        : const SizedBox.shrink();
   }
 
   @override
@@ -239,14 +244,14 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     if (widget.controller != null) widget.controller!._addState(this);
     _boxWidth = (widget.width != null)
-      ? widget.width!
-      : MediaQuery
+        ? widget.width!
+        : MediaQuery
         .of(widget.context)
         .size
         .width;
     _backdropWidth = (widget.backdrop?.width != null)
-      ? widget.backdrop!.width!
-      : MediaQuery
+        ? widget.backdrop!.width!
+        : MediaQuery
         .of(widget.context)
         .size
         .width;
@@ -296,19 +301,19 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                   children: [
                     Container(
                       transform: widget.backdrop!.moving == true
-                        ? Matrix4.translationValues(0.0,
-                          -((_animationController.value *
+                          ? Matrix4.translationValues(0.0,
+                        -((_animationController.value *
                             ((widget.maxHeight! - MediaQuery
                                 .of(widget.context)
                                 .viewInsets
                                 .bottom) - widget.minHeight!)) * 0.2), 0.0,)
-                        : null,
+                          : null,
                       margin: EdgeInsets.only(bottom: _isBoxVisible
                           ? widget.minHeight! > 0 ? widget.minHeight! - 25 : 0
                           : 0,
                       ),
                       child: widget.backdrop!.fading == true
-                      ? Opacity(
+                          ? Opacity(
                         opacity: 1.0 - _animationController.value,
                         child: widget.backdrop!.body,)
                           : widget.backdrop!.body,
@@ -346,7 +351,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                           decoration: BoxDecoration(
                             color: widget.backdrop?.appBar?.searchBox?.color,
                             borderRadius: widget.backdrop?.appBar?.searchBox?.
-                              borderRadius,
+                            borderRadius,
                           ),
                           child: Row(
                             children: [
@@ -357,18 +362,18 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                 clipBehavior: Clip.antiAlias,
                                 decoration: BoxDecoration(
                                   color: widget.backdrop?.appBar?.searchBox?.
-                                    style?.color?.withAlpha(25),
+                                  style?.color?.withAlpha(25),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(30),),),
                                 child: IconButton(
                                   splashRadius: 30,
                                   color: widget.backdrop?.appBar?.searchBox?.
-                                    style?.color,
+                                  style?.color,
                                   splashColor: widget.backdrop?.appBar?.
-                                    searchBox?.style?.color,
+                                  searchBox?.style?.color,
                                   iconSize: 18,
                                   icon: widget.backdrop!.appBar!.searchBox!.
-                                    leading!,
+                                  leading!,
                                   onPressed: () {
                                     widget.controller!.hideSearchBox();
                                   },
@@ -378,11 +383,11 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                 child: TextField(
                                   autofocus: true,
                                   controller: widget.backdrop?.appBar?.
-                                    searchBox?.controller,
+                                  searchBox?.controller,
                                   decoration: widget.backdrop?.appBar?.
-                                    searchBox?.inputDecoration,
+                                  searchBox?.inputDecoration,
                                   style: widget.backdrop?.appBar?.searchBox?.
-                                    style,
+                                  style,
                                 ),
                               ),
                               Container(
@@ -391,7 +396,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                 clipBehavior: Clip.antiAlias,
                                 decoration: BoxDecoration(
                                   color: widget.backdrop?.appBar?.searchBox?.
-                                    style?.color?.withAlpha(25),
+                                  style?.color?.withAlpha(25),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(30),),
                                 ),
@@ -399,16 +404,16 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                   padding: EdgeInsets.zero,
                                   splashRadius: 30,
                                   color: widget.backdrop?.appBar?.searchBox?.
-                                    style?.color,
+                                  style?.color,
                                   splashColor: widget.backdrop?.appBar?.
-                                    searchBox?.style?.color,
+                                  searchBox?.style?.color,
                                   iconSize: 18,
                                   icon: Icon(Icons.close,
                                     color: widget.backdrop?.appBar?.searchBox?.
-                                      style?.color,),
+                                    style?.color,),
                                   onPressed: () {
                                     widget.backdrop?.appBar?.searchBox?.
-                                      controller.text = "";
+                                    controller.text = "";
                                   },
                                 ),
                               ),
@@ -442,12 +447,12 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                               key: ValueKey<bool>
                                                 (value.isOpenMenuIcon!),
                                               size: widget.backdrop?.appBar?.
-                                                leading?.size,
+                                              leading?.size,
                                               color: widget.backdrop?.appBar?.
-                                                leading?.color,
+                                              leading?.color,
                                               !value.isOpenMenuIcon!
                                                   ? widget.backdrop?.appBar?.
-                                                      leading?.icon
+                                              leading?.icon
                                                   : Icons.close,
                                             ),
                                           );
@@ -545,16 +550,16 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                             widget.borderRadius!.bottomLeft.y,),
                       ),
                       boxShadow: (widget.style == BoxStyle.boxShadow)
-                        ? [
-                            BoxShadow(
-                              color: Colors.black.withAlpha(widget.minHeight! > 0
-                                  ? 80
-                                  : (_animationController.value * 80).toInt(),
-                              ),
-                              spreadRadius: 7,
-                              blurRadius: 7,
-                              offset: const Offset(0, 3),
-                            ),
+                          ? [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(widget.minHeight! > 0
+                              ? 80
+                              : (_animationController.value * 80).toInt(),
+                          ),
+                          spreadRadius: 7,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
                       ] : null,
                     ),
                     child: Stack(
@@ -568,23 +573,23 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                               color: widget.draggableIconBackColor,
                               child: Transform(
                                 transform: Matrix4.translationValues(0, -15, 0),
-                                child: Icon(Icons.remove_rounded,
+                                child: Icon(widget.draggableIcon,
                                   color: widget.draggableIconColor, size: 62,),
+                              ),
                             ),
                           ),
-                        ),
                         if(!_isSearchBoxVisible) Container(
                           padding: widget.draggableIconEnabled! &&
-                            widget.draggable!
+                              widget.draggable!
                               ? const EdgeInsets.only(top: 30) : null,
                           child: SingleChildScrollView(
                             controller: _scrollController,
                             physics: (_isBoxOpen && !_isSearchBoxVisible &&
-                              _animationController.value > 0.0)
+                                _animationController.value > 0.0)
                                 ? widget.physics!
                                 : const NeverScrollableScrollPhysics(),
                             child: widget.collapsedBody != null
-                            ? FadeTransition(
+                                ? FadeTransition(
                               opacity: _fadeAnimation,
                               child: widget.body != null
                                   ? widget.body!
@@ -600,7 +605,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                         ),
                         if(_isSearchBoxVisible) Container(
                           margin: widget.draggableIconEnabled! &&
-                            widget.draggable!
+                              widget.draggable!
                               ? const EdgeInsets.only(top: 30)
                               : null,
                           color: widget.color,
@@ -609,11 +614,11 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                         ),
                         if (widget.collapsedBody != null &&
                             _animationController.value < 1.0) Container(
-                            padding: widget.draggableIconEnabled! &&
-                                widget.draggable!
-                                  ? const EdgeInsets.only(top: 30)
-                                  : null,
-                            child: FadeTransition(
+                          padding: widget.draggableIconEnabled! &&
+                              widget.draggable!
+                              ? const EdgeInsets.only(top: 30)
+                              : null,
+                          child: FadeTransition(
                             opacity: _fadeAnimationReverse,
                             child: Container(
                               color: widget.color,
@@ -1070,7 +1075,7 @@ class Backdrop {
   }) : assert(overlayOpacity != null &&
       0.0 <= overlayOpacity &&
       overlayOpacity <= 1.0,
-        "overlayOpacity double value must between 0.0 and 1.0", );
+  "overlayOpacity double value must between 0.0 and 1.0", );
 }
 
 class BackdropAppBar {

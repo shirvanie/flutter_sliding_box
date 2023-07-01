@@ -54,7 +54,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.0.4
+  flutter_sliding_box: ^1.0.5
 ```
 
 import the plugin package to your dart code
@@ -109,9 +109,10 @@ There are several options that allow for more control:
 | `style`                  | The styles of the sliding box that includes `boxShadow` and `boxUnderBox` and `none`                                                                                                                      |
 | `physics`                | Gets a `ScrollPhysic`, the `physics` determines how the scroll view continues to animate after the user stops dragging the scroll view                                                                    |
 | `draggable`              | Allows toggling of draggability of the sliding box. Tf set this to false, the sliding box cannot be dragged up or down                                                                                    |
-| `draggableIconColor`     | The `color` of the `draggable` icon. the position of the icon is top of the box                                                                                                                           |
-| `draggableIconEnabled`   | If set to false, the `draggable` icon hides. Use the `controller` to open and close sliding box by taps.                                                                                                  |
-| `draggableIconBackColor` | The `color` to fill the background of the `draggable` icon. The position of the icon is top of the box                                                                                                    |
+| `draggableIcon`          | A Icon Widget that is placed in top of the box. Gets a IconData                                                                                                                                           |
+| `draggableIconColor`     | The color of the `draggableIcon`. the position of the icon is top of the box                                                                                                                              |
+| `draggableIconEnabled`   | If set to false, the `draggableIcon` hides. Use the `controller` to open and close sliding box by taps                                                                                                    |
+| `draggableIconBackColor` | The color to fill the background of the `draggableIcon` icon. The position of the icon is top of the box                                                                                                  |
 | `onBoxSlide`             | This callback is called when the sliding box slides around with position of the box. The position is a double value between `0.0` and `1.0`, where `0.0` is fully `collapsed` and `1.0` is fully `opened` |
 | `onBoxOpen`              | This callback is called when the sliding box is fully opened                                                                                                                                              |
 | `onBoxClose`             | This callback is called when the sliding box is fully closed                                                                                                                                              |
@@ -148,7 +149,7 @@ Manually changing the properties of the  `Backdrop`
 SlidingBox includes appBar: `BackdropAppBar`
 
 ```dart
-  BoxController boxController = new BoxController();
+  BoxController boxController = BoxController();
 
   @override
   Widget build(BuildContext context) {
@@ -398,12 +399,12 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
 
 <p>
  <img width="220px" alt="BoxController" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller1.png"/>
- 
+
  <img width="220px" alt="BoxController ShowSearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller2.png"/>
 </p>
 
 ```dart
-  BoxController boxController = new BoxController();
+  BoxController boxController = BoxController();
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -460,7 +461,7 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
               height: MediaQuery.of(context).size.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   MaterialButton(
                     child: Text("Open"),
                     onPressed: () => boxController.openBox(),
