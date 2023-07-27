@@ -19,10 +19,10 @@ flutter run --release
 ## Demo
 
 <p>
-    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_1.png"/>
-    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_2.png"/>
-    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_3.png"/>
-    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_4.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_1.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_2.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_3.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_4.png"/>
 </p>
 
 | Source link                                                                                                 | Light                                                                                                                                                                                      | Dark                                                                                                                                                                                    |

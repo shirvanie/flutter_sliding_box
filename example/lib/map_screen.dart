@@ -62,7 +62,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
     //
     return Scaffold(
       body: SlidingBox(
-        context: context,
         controller: boxController,
         minHeight: 200,
         maxHeight: MediaQuery
