@@ -48,24 +48,24 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: SlidingBoxExampleApp.themeMode ==
-          ThemeMode.light ? Brightness.dark : Brightness.light,
-      statusBarBrightness: SlidingBoxExampleApp.themeMode ==
-              ThemeMode.light ? Brightness.dark : Brightness.light,
-      systemNavigationBarIconBrightness: SlidingBoxExampleApp.themeMode ==
-          ThemeMode.light ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: SlidingBoxExampleApp.themeMode ==
-          ThemeMode.light
-        ? Theme
-          .of(context)
-          .colorScheme
-          .onBackground
-          .withAlpha(10)
-        : Theme
-          .of(context)
-          .colorScheme
-          .background
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: SlidingBoxExampleApp.themeMode ==
+            ThemeMode.light ? Brightness.dark : Brightness.light,
+        statusBarBrightness: SlidingBoxExampleApp.themeMode ==
+            ThemeMode.light ? Brightness.dark : Brightness.light,
+        systemNavigationBarIconBrightness: SlidingBoxExampleApp.themeMode ==
+            ThemeMode.light ? Brightness.dark : Brightness.light,
+        systemNavigationBarColor: SlidingBoxExampleApp.themeMode ==
+            ThemeMode.light
+            ? Theme
+            .of(context)
+            .colorScheme
+            .onBackground
+            .withAlpha(10)
+            : Theme
+            .of(context)
+            .colorScheme
+            .background
     ));
     //
     double appBarHeight = MediaQuery
@@ -81,7 +81,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
     //
     return Scaffold(
       body: SlidingBox(
-        context: context,
         controller: boxController,
         minHeight: minHeightBox,
         maxHeight: maxHeightBox,
@@ -91,71 +90,71 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           fading: true,
           overlay: false,
           color: SlidingBoxExampleApp.themeMode == ThemeMode.light
-            ? Theme
+              ? Theme
               .of(context)
               .colorScheme
               .onBackground
               .withAlpha(15)
-            : Theme
+              : Theme
               .of(context)
               .colorScheme
               .background,
           body: _backdrop(),
           appBar: BackdropAppBar(
-            title: Container(
-              margin: const EdgeInsets.only(left: 15),
-              child: Text("Music Player", style: TextStyle(
-                fontSize: 22,
+              title: Container(
+                margin: const EdgeInsets.only(left: 15),
+                child: Text("Music Player", style: TextStyle(
+                  fontSize: 22,
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .onBackground,
+                ),),
+              ),
+              searchBox: SearchBox(
+                controller: textEditingController,
                 color: Theme
                     .of(context)
                     .colorScheme
-                    .onBackground,
-              ),),
-            ),
-            searchBox: SearchBox(
-              controller: textEditingController,
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .background,
-              style: TextStyle(color:
-              Theme
-                  .of(context)
-                  .colorScheme
-                  .onBackground, fontSize: 18),
-              body: Center(child: Text("Search Result",
-                style: TextStyle(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
-                    fontSize: 20),),),
-              draggableBody: true,
-            ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: SizedBox.fromSize(
-                  size: const Size.fromRadius(25),
-                  child: IconButton(
-                    iconSize: 27,
-                    icon: Icon(Icons.search_rounded,
+                    .background,
+                style: TextStyle(color:
+                Theme
+                    .of(context)
+                    .colorScheme
+                    .onBackground, fontSize: 18),
+                body: Center(child: Text("Search Result",
+                  style: TextStyle(
                       color: Theme
                           .of(context)
                           .colorScheme
-                          .onPrimary,),
-                    onPressed: () {
-                      textEditingController.text = "";
-                      boxController.showSearchBox();
-                    },
+                          .onBackground,
+                      fontSize: 20),),),
+                draggableBody: true,
+              ),
+              actions: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  child: SizedBox.fromSize(
+                    size: const Size.fromRadius(25),
+                    child: IconButton(
+                      iconSize: 27,
+                      icon: Icon(Icons.search_rounded,
+                        color: Theme
+                            .of(context)
+                            .colorScheme
+                            .onPrimary,),
+                      onPressed: () {
+                        textEditingController.text = "";
+                        boxController.showSearchBox();
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ]
+              ]
           ),
         ),
         body: _body(),
-        draggableIconEnabled: false,
+        draggableIconVisible: false,
         collapsed: true,
         collapsedBody: _collapsedBody(),
       ),
@@ -169,18 +168,16 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
         children: [
           Container(
             height: 50,
-            margin: EdgeInsets.only(top: 15),
+            margin: const EdgeInsets.only(top: 15),
             child: Row(
               children: [
                 TextButton(
-                  style: ButtonStyle(
-                  ),
                   onPressed: () { },
                   child: Text("Tracks",
                     style: TextStyle(color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
+                        .of(context)
+                        .colorScheme
+                        .onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.normal,
                     ),
@@ -190,10 +187,10 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     onPressed: () { },
                     child: Text("Playlists",
                       style: TextStyle(color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground
-                        .withAlpha(100),
+                          .of(context)
+                          .colorScheme
+                          .onBackground
+                          .withAlpha(100),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -207,8 +204,8 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                           .colorScheme
                           .onBackground
                           .withAlpha(100),
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal,
                       ),
                     )
                 ),
@@ -216,10 +213,10 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     onPressed: () { },
                     child: Text("Folders",
                       style: TextStyle(color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground
-                        .withAlpha(100),
+                          .of(context)
+                          .colorScheme
+                          .onBackground
+                          .withAlpha(100),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -228,27 +225,26 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               ],
             ),
           ),
-          Container(
-            child: Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: SlidingBoxExampleApp.themeMode == ThemeMode.light
-                      ? Theme
-                      .of(context)
-                      .colorScheme
-                      .background
-                      : Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground
-                      .withAlpha(15),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: SlidingBoxExampleApp.themeMode == ThemeMode.light
+                    ? Theme
+                    .of(context)
+                    .colorScheme
+                    .background
+                    : Theme
+                    .of(context)
+                    .colorScheme
+                    .onBackground
+                    .withAlpha(15),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
-                child: ListView(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
+              ),
+              child: ListView(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 25),
                   physics: const BouncingScrollPhysics(),
                   children: [
                     Container(
@@ -262,18 +258,18 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                               children: [
                                 Icon(CupertinoIcons.sort_down,
                                   size: 23, color: Theme
-                                    .of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withAlpha(150),
+                                      .of(context)
+                                      .colorScheme
+                                      .onBackground
+                                      .withAlpha(150),
                                 ),
-                                SizedBox(width: 5,),
+                                const SizedBox(width: 5,),
                                 Text("Date added",
                                   style: TextStyle(color: Theme
-                                    .of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withAlpha(150),
+                                      .of(context)
+                                      .colorScheme
+                                      .onBackground
+                                      .withAlpha(150),
                                     fontSize: 13,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -286,14 +282,14 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                               Container(
                                 width: 32,
                                 height: 32,
-                                margin: EdgeInsets.only(right: 10),
+                                margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
                                     color: Theme
                                         .of(context)
                                         .colorScheme
                                         .onBackground
                                         .withAlpha(15),
-                                    borderRadius: BorderRadius.all(Radius.circular(30))
+                                    borderRadius: const BorderRadius.all(Radius.circular(30))
                                 ),
                                 child: IconButton(
                                   onPressed: () { },
@@ -313,14 +309,14 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                               Container(
                                 width: 32,
                                 height: 32,
-                                margin: EdgeInsets.only(right: 10),
+                                margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                  color: Theme
-                                      .of(context)
-                                      .colorScheme
-                                      .onBackground
-                                      .withAlpha(15),
-                                  borderRadius: BorderRadius.all(Radius.circular(30))
+                                    color: Theme
+                                        .of(context)
+                                        .colorScheme
+                                        .onBackground
+                                        .withAlpha(15),
+                                    borderRadius: const BorderRadius.all(Radius.circular(30))
                                 ),
                                 child: IconButton(
                                   onPressed: () { },
@@ -553,7 +549,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         onMorePressed: () { }
                     ),
                   ]
-                ),
               ),
             ),
           ),
@@ -567,22 +562,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
       height: boxController.isAttached ? boxController.maxHeight : null,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          colors: [
-            Color(0xFFFF850A).withAlpha(SlidingBoxExampleApp.themeMode ==
-                ThemeMode.light? 150 : 100),
-            SlidingBoxExampleApp.themeMode == ThemeMode.light
-                ? Theme
-                .of(context)
-                .colorScheme
-                .onBackground
-                .withAlpha(15)
-                : Theme
-                .of(context)
-                .colorScheme
-                .background
-          ]
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              const Color(0xFFFF850A).withAlpha(SlidingBoxExampleApp.themeMode ==
+                  ThemeMode.light? 150 : 100),
+              SlidingBoxExampleApp.themeMode == ThemeMode.light
+                  ? Theme
+                  .of(context)
+                  .colorScheme
+                  .onBackground
+                  .withAlpha(15)
+                  : Theme
+                  .of(context)
+                  .colorScheme
+                  .background
+            ]
         ),
       ),
       child: Stack(
@@ -590,50 +585,50 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               height: 45,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      if(boxController.isAttached) boxController.closeBox();
-                    },
-                    color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
-                    iconSize: 24,
-                    icon: Icon(CupertinoIcons.chevron_down)
+                      onPressed: () {
+                        if(boxController.isAttached) boxController.closeBox();
+                      },
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .onBackground,
+                      iconSize: 24,
+                      icon: const Icon(CupertinoIcons.chevron_down)
                   ),
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () { },
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onBackground,
-                        iconSize: 21,
-                        icon: Icon(Icons.share_outlined)
+                          onPressed: () { },
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .onBackground,
+                          iconSize: 21,
+                          icon: const Icon(Icons.share_outlined)
                       ),
                       IconButton(
-                        onPressed: () { },
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onBackground,
-                        iconSize: 22,
-                        icon: Icon(CupertinoIcons.volume_up)
+                          onPressed: () { },
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .onBackground,
+                          iconSize: 22,
+                          icon: const Icon(CupertinoIcons.volume_up)
                       ),
                       IconButton(
-                        onPressed: () { },
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onBackground,
-                        iconSize: 22,
-                        icon: Icon(Icons.more_vert_rounded)
+                          onPressed: () { },
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .onBackground,
+                          iconSize: 22,
+                          icon: const Icon(Icons.more_vert_rounded)
                       ),
                     ],
                   )
@@ -644,7 +639,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              margin: EdgeInsets.fromLTRB(10, 100, 10 ,10),
+              margin: const EdgeInsets.fromLTRB(10, 100, 10 ,10),
               child: Column(
                 children: [
                   Container(
@@ -652,7 +647,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     height: 200,
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      borderRadius: const BorderRadius.all(Radius.circular(30)),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withAlpha(30),
@@ -666,7 +661,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         "assets/images/music_player/music.jpg", fit: BoxFit.cover),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(top: 30),
                     child: Text("Title",
                       style: TextStyle(fontSize: 22,
                           color: Theme
@@ -675,7 +670,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                               .onBackground),),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 2),
+                    margin: const EdgeInsets.only(top: 2),
                     child: Text("Artist, Album",
                       style: TextStyle(fontSize: 14,
                           color: Theme
@@ -689,7 +684,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               height: boxController.isAttached ? boxController.maxHeight * 0.3 : null,
               child: Column(
                 children: [
@@ -697,24 +692,24 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       IconButton(
-                        onPressed: () { },
-                        icon: Icon(CupertinoIcons.music_note_list,
-                          color: Colors.white,)
-                      ),
-                      IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.heart,
+                          icon: const Icon(CupertinoIcons.music_note_list,
                             color: Colors.white,)
                       ),
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.plus,
+                          icon: const Icon(CupertinoIcons.heart,
+                            color: Colors.white,)
+                      ),
+                      IconButton(
+                          onPressed: () { },
+                          icon: const Icon(CupertinoIcons.plus,
                             color: Colors.white,)
                       ),
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 20),
+                    margin: const EdgeInsets.only(bottom: 20),
                     child: Slider(
                       value: 0.2,
                       inactiveColor: Colors.white.withAlpha(100),
@@ -729,28 +724,28 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     children: [
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.shuffle,
+                          icon: const Icon(CupertinoIcons.shuffle,
                             color: Colors.white,)
                       ),
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.backward_end_alt_fill,
+                          icon: const Icon(CupertinoIcons.backward_end_alt_fill,
                             color: Colors.white,)
                       ),
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.pause_solid,
+                          icon: const Icon(CupertinoIcons.pause_solid,
                             color: Colors.white,
-                              size: 40,)
+                            size: 40,)
                       ),
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.forward_end_alt_fill,
+                          icon: const Icon(CupertinoIcons.forward_end_alt_fill,
                             color: Colors.white,)
                       ),
                       IconButton(
                           onPressed: () { },
-                          icon: Icon(CupertinoIcons.repeat,
+                          icon: const Icon(CupertinoIcons.repeat,
                             color: Colors.white,)
                       ),
                     ],
@@ -770,13 +765,13 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
         if(boxController.isBoxClosed) boxController.openBox();
       },
       child: Container(
-        color: Color(0xFFFF850A),
+        color: const Color(0xFFFF850A),
         child: Row(
           children: [
             Container(
               width: 40,
               height: 40,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               clipBehavior: Clip.antiAlias,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(40)),
@@ -784,49 +779,43 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               child: Image.asset(
                   "assets/images/music_player/music.jpg", fit: BoxFit.cover),
             ),
-            Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Text("Title",
-                        style: TextStyle(fontSize: 18,
-                            color: Colors.white ),),
-                    ),
-                    Container(
-                      child: Text("Artist, Album",
-                        style: TextStyle(fontSize: 13,
-                            color: Colors.white),),
-                    ),
-                  ],
-                ),
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Title",
+                    style: TextStyle(fontSize: 18,
+                        color: Colors.white ),),
+                  Text("Artist, Album",
+                    style: TextStyle(fontSize: 13,
+                        color: Colors.white),),
+                ],
               ),
             ),
-            Container(
+            SizedBox(
               width: 200,
               height: 40,
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () { },
-                    icon: Icon(CupertinoIcons.backward_end_alt_fill,
-                      size: 18, color: Colors.white,)
-                  ),
-                  IconButton(
-                    onPressed: () { },
-                    icon: Icon(CupertinoIcons.play_arrow_solid,
-                      size: 18, color: Colors.white,)
-                  ),
-                  IconButton(
-                    onPressed: () { },
-                    icon: Icon(CupertinoIcons.forward_end_alt_fill,
-                      size: 18, color: Colors.white,)
+                      onPressed: () { },
+                      icon: const Icon(CupertinoIcons.backward_end_alt_fill,
+                        size: 18, color: Colors.white,)
                   ),
                   IconButton(
                       onPressed: () { },
-                      icon: Icon(CupertinoIcons.music_note_list,
+                      icon: const Icon(CupertinoIcons.play_arrow_solid,
+                        size: 18, color: Colors.white,)
+                  ),
+                  IconButton(
+                      onPressed: () { },
+                      icon: const Icon(CupertinoIcons.forward_end_alt_fill,
+                        size: 18, color: Colors.white,)
+                  ),
+                  IconButton(
+                      onPressed: () { },
+                      icon: const Icon(CupertinoIcons.music_note_list,
                         size: 18, color: Colors.white,)
                   ),
                 ],
@@ -860,8 +849,8 @@ class MaterialListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
@@ -909,7 +898,7 @@ class MaterialListItem extends StatelessWidget {
               ],
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(65, 10, 15, 0),
+              margin: const EdgeInsets.fromLTRB(65, 10, 15, 0),
               height: 1,
               color: Theme.of(context).colorScheme.onBackground.withAlpha(30),
             ),

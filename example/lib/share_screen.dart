@@ -10,10 +10,10 @@ class SlidingBoxExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Flutter Sliding Box - Example App",
-      home: const SlidingBoxExamplePage(),
+      home: SlidingBoxExamplePage(),
     );
   }
 }
@@ -27,71 +27,52 @@ class SlidingBoxExamplePage extends StatefulWidget {
 
 class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
 
-  final BoxController boxController = BoxController();
-  late double minHeightBox;
-  late double maxHeightBox;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light
     ));
     //
-    minHeightBox = 0;
-    maxHeightBox = MediaQuery
+    double maxHeightBox = MediaQuery
         .of(context)
         .size
         .height * 0.4;
     //
     return Scaffold(
-      body: SlidingBox(
-        context: context,
-        controller: boxController,
-        minHeight: minHeightBox,
-        maxHeight: maxHeightBox,
-        color: Colors.white,
-        style: BoxStyle.boxShadow,
-        backdrop: Backdrop(
-          color: Color(0xff607D8B),
-          body: _backdrop(),
-        ),
-        collapsed: true,
-        draggableIconBackColor: Colors.transparent,
-        body: _body(),
-      ),
-    );
-  }
-
-  _backdrop() {
-    return Center(
-      child: Container(
-        width: 110,
-        child: MaterialButton(
-          color: Colors.white,
-          highlightColor: Colors.black38,
-          splashColor: Colors.black38,
-          onPressed: () {
-            boxController.isBoxOpen
-                ? boxController.closeBox()
-                : boxController.openBox();
-          },
-          child: Row(
-            children: [
-              Icon(Icons.share_outlined),
-              SizedBox(width: 10,),
-              Text("Share")
-            ],
+      backgroundColor: Colors.blueGrey,
+      body: Center(
+        child: SizedBox(
+          width: 110,
+          child: MaterialButton(
+            color: Colors.white,
+            highlightColor: Colors.black38,
+            splashColor: Colors.black38,
+            onPressed: () {
+              showSlidingBox(
+                  context: context,
+                  box: SlidingBox(
+                    maxHeight: maxHeightBox,
+                    color: Colors.white,
+                    style: BehindBoxStyle.shadow,
+                    draggableIconBackColor: Colors.transparent,
+                    body: _body(),
+                  )
+              );
+            },
+            child: const Row(
+              children: [
+                Icon(Icons.share_outlined),
+                SizedBox(width: 10,),
+                Text("Share")
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
 
   _body() {
     return Column(
@@ -99,59 +80,44 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: 100,
-          padding: EdgeInsets.all(10),
-          margin: EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.all(10),
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-                  width: 1,
-                  color: Colors.black.withAlpha(30),
-                )
-            )
+              border: Border(
+                  bottom: BorderSide(
+                    width: 1,
+                    color: Colors.black.withAlpha(30),
+                  )
+              )
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               MaterialShareIconButton(
-                icon: Icon(Icons.share_outlined, size: 27),
-                text: Text("Share"),
+                icon: const Icon(Icons.share_outlined, size: 27),
+                text: const Text("Share"),
                 onPressed: () { },
               ),
               MaterialShareIconButton(
-                icon: Icon(Icons.link_outlined, size: 27),
-                text: Text("Copy link"),
+                icon: const Icon(Icons.link_outlined, size: 27),
+                text: const Text("Copy link"),
                 onPressed: () { },
               ),
               MaterialShareIconButton(
-                icon: Icon(CupertinoIcons.mail, size: 27),
-                text: Text("Send mail"),
+                icon: const Icon(CupertinoIcons.mail, size: 27),
+                text: const Text("Send mail"),
                 onPressed: () { },
               ),
               MaterialShareIconButton(
-                icon: Icon(Icons.sms_outlined, size: 27),
-                text: Text("Send SMS"),
+                icon: const Icon(Icons.sms_outlined, size: 27),
+                text: const Text("Send SMS"),
                 onPressed: () { },
               ),
             ],
           ),
         ),
         MaterialListItem(
-          title: Text("User Name",
-            style: TextStyle(
-              color: Colors.black,
-                fontSize: 18,
-            ),),
-          description: Text("User FullName",
-            style: TextStyle(
-              color: Colors.black.withAlpha(120),
-              fontSize: 13,
-            ),),
-          image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
-        ),
-        MaterialListItem(
-          title: Text("User Name",
+          title: const Text("User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -166,7 +132,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           onPressed: () { },
         ),
         MaterialListItem(
-          title: Text("User Name",
+          title: const Text("User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -181,7 +147,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           onPressed: () { },
         ),
         MaterialListItem(
-          title: Text("User Name",
+          title: const Text("User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -196,7 +162,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           onPressed: () { },
         ),
         MaterialListItem(
-          title: Text("User Name",
+          title: const Text("User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -211,7 +177,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           onPressed: () { },
         ),
         MaterialListItem(
-          title: Text("User Name",
+          title: const Text("User Name",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),),
+          description: Text("User FullName",
+            style: TextStyle(
+              color: Colors.black.withAlpha(120),
+              fontSize: 13,
+            ),),
+          image: Image.asset(
+            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
+          onPressed: () { },
+        ),
+        MaterialListItem(
+          title: const Text("User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
@@ -290,7 +271,7 @@ class MaterialListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: Column(
         children: [
           Row(
@@ -305,19 +286,19 @@ class MaterialListItem extends StatelessWidget {
                 child: image,
               ),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(left: 15, top: 0),
-                      child: title
-                    ),
-                    Container(
-                        margin: const EdgeInsets.only(left: 15, top: 2),
-                        child: description
-                    ),
-                  ],
-                )
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(left: 15, top: 0),
+                          child: title
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(left: 15, top: 2),
+                          child: description
+                      ),
+                    ],
+                  )
               ),
               Container(
                 width: 60,
@@ -326,20 +307,20 @@ class MaterialListItem extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   color: Colors.black.withAlpha(20),
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
                 child: MaterialButton(
-                  padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                  splashColor: Colors.black.withAlpha(50),
-                  highlightColor: Colors.black.withAlpha(50),
-                  onPressed: onPressed,
-                  child: Text("Send")
+                    padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    splashColor: Colors.black.withAlpha(50),
+                    highlightColor: Colors.black.withAlpha(50),
+                    onPressed: onPressed,
+                    child: const Text("Send")
                 ),
               ),
             ],
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(60, 10, 0, 0),
+            margin: const EdgeInsets.fromLTRB(60, 10, 0, 0),
             height: 1,
             color: Colors.black.withAlpha(30),
           ),
@@ -348,6 +329,3 @@ class MaterialListItem extends StatelessWidget {
     );
   }
 }
-
-
-

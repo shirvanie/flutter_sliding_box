@@ -1,4 +1,13 @@
 
+## [1.1.0] - 26 July, 2023
+- Remove `context`
+- Rename `draggableIconEnabled` with `draggableIconVisible`
+- Rename `BoxStyle` with `BehindBoxStyle`
+- Rename `boxUnderBox` with `sheet`. New usage(`style: BehindBoxStyle.sheet`)
+- Rename `boxShadow` with `shadow`. New usage(`style: BehindBoxStyle.shadow`)
+- Add `showSlidingBox()` method. Now display a sliding box easily and simply
+
+
 ## [1.0.5] - 1 July, 2023
 - Add `draggableIcon`
 

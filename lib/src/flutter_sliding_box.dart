@@ -9,10 +9,6 @@ import 'package:flutter/material.dart';
 
 class SlidingBox extends StatefulWidget {
 
-
-  /// required [context] property
-  final BuildContext context;
-
   /// It can be used to control the state of sliding box and search box
   final BoxController? controller;
 
@@ -31,9 +27,9 @@ class SlidingBox extends StatefulWidget {
   /// The corners of the sliding box are rounded by this
   final BorderRadius? borderRadius;
 
-  /// The styles of the sliding box that includes
-  /// boxShadow and boxUnderBox and none
-  final BoxStyle? style;
+  /// The styles behind of the sliding box that includes
+  /// shadow and sheet and none
+  final BehindBoxStyle? style;
 
   /// A widget that slides from [minHeight] to [maxHeight] and is placed on the
   /// backdrop
@@ -63,7 +59,7 @@ class SlidingBox extends StatefulWidget {
 
   /// If set to false, the [draggableIcon] hides. Use the controller to
   /// open and close sliding box by taps.
-  final bool? draggableIconEnabled;
+  final bool? draggableIconVisible;
 
   /// The color to fill the background of the [draggableIcon] icon.
   /// the position of the icon is top of the box
@@ -111,7 +107,6 @@ class SlidingBox extends StatefulWidget {
 
   SlidingBox({
     super.key,
-    required this.context,
     this.controller,
     this.width,
     this.minHeight = 200,
@@ -119,14 +114,14 @@ class SlidingBox extends StatefulWidget {
     this.color = Colors.white,
     this.borderRadius = const BorderRadius.only(topLeft: Radius.circular(30),
       topRight: Radius.circular(30),),
-    this.style = BoxStyle.none,
+    this.style = BehindBoxStyle.none,
     this.body,
     this.bodyBuilder,
     this.physics = const BouncingScrollPhysics(),
     this.draggable = true,
     this.draggableIcon = Icons.remove_rounded,
     this.draggableIconColor = const Color(0xff9a9a9a),
-    this.draggableIconEnabled = true,
+    this.draggableIconVisible = true,
     this.draggableIconBackColor = const Color(0x22777777),
     this.collapsed = false,
     this.collapsedBody,
@@ -246,13 +241,13 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     _boxWidth = (widget.width != null)
         ? widget.width!
         : MediaQuery
-        .of(widget.context)
+        .of(context)
         .size
         .width;
     _backdropWidth = (widget.backdrop?.width != null)
         ? widget.backdrop!.width!
         : MediaQuery
-        .of(widget.context)
+        .of(context)
         .size
         .width;
     return WillPopScope(
@@ -287,7 +282,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
             child: SizedBox(
               width: _backdropWidth,
               height: MediaQuery
-                  .of(widget.context)
+                  .of(context)
                   .size
                   .height,
               child: Container(
@@ -304,7 +299,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                           ? Matrix4.translationValues(0.0,
                         -((_animationController.value *
                             ((widget.maxHeight! - MediaQuery
-                                .of(widget.context)
+                                .of(context)
                                 .viewInsets
                                 .bottom) - widget.minHeight!)) * 0.2), 0.0,)
                           : null,
@@ -433,7 +428,8 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                                   if(_isBoxVisible
                                       && widget.backdrop?.appBar?.leading
                                           != null) Container(
-                                    margin: const EdgeInsets.only(left: 10),
+                                    margin: const EdgeInsets.only(left: 10,
+                                        right: 10),
                                     child: GestureDetector(
                                       onTap: _onGestureTap,
                                       child: ValueListenableBuilder<
@@ -467,7 +463,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                               if(widget.backdrop?.appBar?.actions != null) Row(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: Theme
-                                    .of(widget.context)
+                                    .of(context)
                                     .useMaterial3
                                     ? CrossAxisAlignment.center
                                     : CrossAxisAlignment.stretch,
@@ -500,19 +496,17 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
           builder: (_, child) {
             return Stack(
               children: <Widget>[
-                if(widget.style == BoxStyle.boxUnderBox) Positioned(
-                  bottom: _animationController.value *
-                      ((widget.maxHeight! - MediaQuery
-                          .of(widget.context)
-                          .viewInsets
-                          .bottom) - widget.minHeight!) + widget.minHeight! -
-                      40,
-                  child: SizedBox(
-                    width: MediaQuery
-                        .of(widget.context)
-                        .size
-                        .width,
-                    height: 50,
+                if(widget.style == BehindBoxStyle.sheet) Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: EdgeInsets.only(top: _isSearchBoxVisible ? 55 : 0),
+                    width: _boxWidth,
+                    height: _animationController.value *
+                        ((widget.maxHeight! - MediaQuery
+                            .of(context)
+                            .viewInsets
+                            .bottom) - widget.minHeight!) + widget.minHeight!
+                        + 10,
                     child: Center(
                       child: Container(
                         width: _boxWidth - 50,
@@ -530,15 +524,15 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
+                    margin: EdgeInsets.only(top: _isSearchBoxVisible ? 65 : 0),
                     width: _boxWidth,
                     height: _animationController.value *
                         ((widget.maxHeight! - MediaQuery
-                            .of(widget.context)
+                            .of(context)
                             .viewInsets
                             .bottom) - widget.minHeight!) + widget.minHeight!,
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
-                      color: widget.color,
                       borderRadius: BorderRadius.only(
                         topLeft: widget.borderRadius!.topLeft,
                         topRight: widget.borderRadius!.topRight,
@@ -549,7 +543,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                             _animationController.value) *
                             widget.borderRadius!.bottomLeft.y,),
                       ),
-                      boxShadow: (widget.style == BoxStyle.boxShadow)
+                      boxShadow: (widget.style == BehindBoxStyle.shadow)
                           ? [
                         BoxShadow(
                           color: Colors.black.withAlpha(widget.minHeight! > 0
@@ -562,71 +556,76 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                         ),
                       ] : null,
                     ),
-                    child: Stack(
-                      children: [
-                        if(widget.draggableIconEnabled! && widget.draggable!)
-                          GestureDetector(
-                            onTap: _onGestureTap,
-                            child: Container(
-                              width: _boxWidth,
-                              height: 30,
-                              color: widget.draggableIconBackColor,
-                              child: Transform(
-                                transform: Matrix4.translationValues(0, -15, 0),
-                                child: Icon(widget.draggableIcon,
-                                  color: widget.draggableIconColor, size: 62,),
+                    child: Container(
+                      color: widget.color,
+                      child: Stack(
+                        children: [
+                          if(widget.draggableIconVisible! && widget.draggable!)
+                            GestureDetector(
+                              onTap: _onGestureTap,
+                              child: Container(
+                                width: _boxWidth,
+                                height: 30,
+                                color: widget.draggableIconBackColor,
+                                child: Transform(
+                                  transform: Matrix4.translationValues(
+                                      0, -15, 0),
+                                  child: Icon(widget.draggableIcon,
+                                    color: widget.draggableIconColor,
+                                    size: 62,),
+                                ),
                               ),
                             ),
-                          ),
-                        if(!_isSearchBoxVisible) Container(
-                          padding: widget.draggableIconEnabled! &&
-                              widget.draggable!
-                              ? const EdgeInsets.only(top: 30) : null,
-                          child: SingleChildScrollView(
-                            controller: _scrollController,
-                            physics: (_isBoxOpen && !_isSearchBoxVisible &&
-                                _animationController.value > 0.0)
-                                ? widget.physics!
-                                : const NeverScrollableScrollPhysics(),
-                            child: widget.collapsedBody != null
-                                ? FadeTransition(
-                              opacity: _fadeAnimation,
-                              child: widget.body != null
+                          if(!_isSearchBoxVisible) Container(
+                            padding: widget.draggableIconVisible! &&
+                                widget.draggable!
+                                ? const EdgeInsets.only(top: 30) : null,
+                            child: SingleChildScrollView(
+                              controller: _scrollController,
+                              physics: (_isBoxOpen && !_isSearchBoxVisible &&
+                                  _animationController.value > 0.0)
+                                  ? widget.physics!
+                                  : const NeverScrollableScrollPhysics(),
+                              child: widget.collapsedBody != null
+                                  ? FadeTransition(
+                                opacity: _fadeAnimation,
+                                child: widget.body != null
+                                    ? widget.body!
+                                    : widget.bodyBuilder != null
+                                    ? widget.bodyBuilder!(_scrollController,
+                                  _boxPosition,) : Container(),
+                              ) : widget.body != null
                                   ? widget.body!
                                   : widget.bodyBuilder != null
                                   ? widget.bodyBuilder!(_scrollController,
                                 _boxPosition,) : Container(),
-                            ) : widget.body != null
-                                ? widget.body!
-                                : widget.bodyBuilder != null
-                                ? widget.bodyBuilder!(_scrollController,
-                              _boxPosition,) : Container(),
-                          ),
-                        ),
-                        if(_isSearchBoxVisible) Container(
-                          margin: widget.draggableIconEnabled! &&
-                              widget.draggable!
-                              ? const EdgeInsets.only(top: 30)
-                              : null,
-                          color: widget.color,
-                          child: FadeTransition(
-                            opacity: _opacityAnimation, child: _searchBody,),
-                        ),
-                        if (widget.collapsedBody != null &&
-                            _animationController.value < 1.0) Container(
-                          padding: widget.draggableIconEnabled! &&
-                              widget.draggable!
-                              ? const EdgeInsets.only(top: 30)
-                              : null,
-                          child: FadeTransition(
-                            opacity: _fadeAnimationReverse,
-                            child: Container(
-                              color: widget.color,
-                              child: widget.collapsedBody,
                             ),
                           ),
-                        ),
-                      ],
+                          if(_isSearchBoxVisible) Container(
+                            margin: widget.draggableIconVisible! &&
+                                widget.draggable!
+                                ? const EdgeInsets.only(top: 30)
+                                : null,
+                            color: widget.color,
+                            child: FadeTransition(
+                              opacity: _opacityAnimation, child: _searchBody,),
+                          ),
+                          if (widget.collapsedBody != null &&
+                              _animationController.value < 1.0) Container(
+                            padding: widget.draggableIconVisible! &&
+                                widget.draggable!
+                                ? const EdgeInsets.only(top: 30)
+                                : null,
+                            child: FadeTransition(
+                              opacity: _fadeAnimationReverse,
+                              child: Container(
+                                color: widget.color,
+                                child: widget.collapsedBody,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -666,7 +665,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
       });
     }
     _animationController.value -= dy / ((widget.maxHeight! - MediaQuery
-        .of(widget.context)
+        .of(context)
         .viewInsets
         .bottom) - widget.minHeight!);
     if (widget.controller == null) return;
@@ -690,7 +689,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     _isBoxAnimating = true;
     if (v.pixelsPerSecond.dy > 0 &&
         v.pixelsPerSecond.dy > (widget.maxHeight! - MediaQuery
-            .of(widget.context)
+            .of(context)
             .viewInsets
             .bottom)) {
       _animationController.animateTo(
@@ -702,7 +701,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
       });
     } else if (v.pixelsPerSecond.dy < 0 &&
         v.pixelsPerSecond.dy < -(widget.maxHeight! - MediaQuery
-            .of(widget.context)
+            .of(context)
             .viewInsets
             .bottom)) {
       _animationController.animateTo(
@@ -915,57 +914,73 @@ class BoxController extends ValueNotifier<MenuIconValue> {
 
   /// Closes the sliding box with animation (i.e. to the [SlidingBox.minHeight])
   Future<void> closeBox() async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    value = MenuIconValue.openMenu();
-    return _boxState!._closeBox()
-        .then((_) => notifyListeners());
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      value = MenuIconValue.openMenu();
+      return _boxState!._closeBox()
+          .then((_) => notifyListeners());
+    } catch(e) { return; }
   }
 
   /// Opens the sliding box with animation (i.e. to the [SlidingBox.maxHeight])
   Future<void> openBox() async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    value = MenuIconValue.closeMenu();
-    return _boxState!._openBox()
-        .then((_) => notifyListeners());
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      value = MenuIconValue.closeMenu();
+      return _boxState!._openBox()
+          .then((_) => notifyListeners());
+    } catch(e) { return; }
   }
 
   /// Hides the sliding box (i.e. is invisible)
-  Future<void> hideBox() {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    return _boxState!._hideBox();
+  Future<void> hideBox() async {
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      return _boxState!._hideBox();
+    } catch(e) { return; }
   }
 
   /// Shows the sliding box (i.e. is visible)
-  Future<void> showBox() {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    return _boxState!._showBox();
+  Future<void> showBox() async {
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      return _boxState!._showBox();
+    } catch(e) { return; }
   }
 
   /// Hides the search box (i.e. is invisible)
   Future<void> hideSearchBox() async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    value = _boxState!._isBoxOpen ? MenuIconValue.closeMenu() : MenuIconValue
-        .openMenu();
-    return _boxState!._hideSearchBox()
-        .then((_) => notifyListeners());
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      value = _boxState!._isBoxOpen ? MenuIconValue.closeMenu() : MenuIconValue
+          .openMenu();
+      return _boxState!._hideSearchBox()
+          .then((_) => notifyListeners());
+    } catch(e) { return; }
   }
 
   /// Shows the search box (i.e. is visible)
   Future<void> showSearchBox() async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    return _boxState!._showSearchBox();
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      return _boxState!._showSearchBox();
+    } catch(e) { return; }
   }
 
   /// Sets the sliding box position with animation (a value between 0.0 and 1.0)
   Future<void> setSearchBody({required Widget child}) async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    return _boxState!._setSearchBody(child);
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      return _boxState!._setSearchBody(child);
+    } catch(e) { return; }
   }
 
   Future<void> setPosition(double value) async {
-    assert(isAttached, "BoxController must be attached to a SlidingBox");
-    assert(0.0 <= value && value <= 1.0);
-    return _boxState!._setPosition(value);
+    try{
+      assert(isAttached, "BoxController must be attached to a SlidingBox");
+      assert(0.0 <= value && value <= 1.0);
+      return _boxState!._setPosition(value);
+    } catch(e) { return; }
   }
 
   /// Returns current box position (a value between 0.0 and 1.0)
@@ -1023,10 +1038,10 @@ class BoxController extends ValueNotifier<MenuIconValue> {
   }
 }
 
-enum BoxStyle{
+enum BehindBoxStyle{
   none,
-  boxShadow,
-  boxUnderBox,
+  shadow,
+  sheet,
 }
 
 class Backdrop {
@@ -1083,23 +1098,20 @@ class BackdropAppBar {
   /// A Widget that is placed on the topLeft of the [SlidingBox.backdrop]
   final Widget? title;
 
-  /// A [Icon] Widget that is placed in left of the [title]
+  /// A [Icon] Widget that is placed in left of the BackdropAppBar [title]
   final Icon? leading;
-
-  /// The [decoration] to paint behind the child
-  final BoxDecoration? decoration;
 
   /// An search box to display at the top of the [SlidingBox.backdrop].
   /// if non-null, an search Icon displayed on topRight of the backdrop
   final SearchBox? searchBox;
 
-  /// A list of Widgets that is placed on the topRight of the [SlidingBox.backdrop]
+  /// A list of Widgets that is placed on the topRight of the
+  /// [SlidingBox.backdrop]
   final List<Widget>? actions;
 
   const BackdropAppBar({
     this.title,
     this.leading,
-    this.decoration,
     this.searchBox,
     this.actions,
   });
@@ -1151,4 +1163,80 @@ class SearchBox {
     this.body,
     this.draggableBody = true,
   });
+}
+
+Future<T?> showSlidingBox<T>({
+  required BuildContext context,
+  required SlidingBox box,
+  bool barrierDismissible = true,
+  Color? barrierColor = Colors.black54,
+  String? barrierLabel,
+  bool useSafeArea = true,
+  bool useRootNavigator = false,
+  RouteSettings? routeSettings,
+  Offset? anchorPoint,
+  TraversalEdgeBehavior? traversalEdgeBehavior,
+}) {
+  assert(debugCheckHasMaterialLocalizations(context));
+  final CapturedThemes themes = InheritedTheme.capture(
+    from: context,
+    to: Navigator.of(
+      context,
+      rootNavigator: useRootNavigator,
+    ).context,
+  );
+  return Navigator.of(context, rootNavigator: useRootNavigator).push<T>(
+      DialogRoute<T>(
+        context: context,
+        builder: (context) => _slidingBoxModal(context, box),
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+        barrierLabel: barrierLabel,
+        useSafeArea: useSafeArea,
+        settings: routeSettings,
+        themes: themes,
+        anchorPoint: anchorPoint,
+        traversalEdgeBehavior: traversalEdgeBehavior
+            ?? TraversalEdgeBehavior.closedLoop,
+      ));
+}
+
+Widget _slidingBoxModal(BuildContext context, SlidingBox box) {
+  BoxController controller = BoxController();
+  Future.delayed(Duration.zero, () => controller.isAttached
+      ? controller.openBox() : null);
+  return Material(
+    type: MaterialType.transparency,
+    child: SlidingBox(
+      key: box.key,
+      controller: controller,
+      width: box.width,
+      minHeight: 0,
+      maxHeight: box.maxHeight,
+      color: box.color,
+      borderRadius: box. borderRadius,
+      style: box.style,
+      body: box.body,
+      bodyBuilder: box.bodyBuilder,
+      physics: box.physics,
+      draggable: box.draggable,
+      draggableIcon: box.draggableIcon,
+      draggableIconColor: box.draggableIconColor,
+      draggableIconVisible: box.draggableIconVisible,
+      draggableIconBackColor: box.draggableIconBackColor,
+      collapsed: true,
+      collapsedBody: box.collapsedBody,
+      animationCurve: box.animationCurve,
+      animationDuration: box.animationDuration,
+      onBoxClose: () {
+        controller.dispose();
+        Navigator.of(context).pop();
+        box.onBoxClose?.call();
+      },
+      onBoxHide: box.onBoxHide,
+      onBoxSlide: box.onBoxSlide,
+      onBoxShow: box.onBoxShow,
+      onBoxOpen: box.onBoxOpen,
+    ),
+  );
 }

@@ -1,4 +1,7 @@
 # Sliding Box for Flutter
+
+<img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/cover.png"/>
+
 [![pub package](https://img.shields.io/pub/v/flutter_sliding_box.svg)](https://pub.dartlang.org/packages/flutter_sliding_box)
 [![GitHub Stars](https://img.shields.io/github/stars/shirvanie/flutter_sliding_box.svg?logo=github)](https://github.com/shirvanie/flutter_sliding_box)
 [![Platform](https://img.shields.io/badge/platform-all-green.svg)](https://img.shields.io/badge/platform-android%20|%20ios%20|%20linux%20|%20macos%20|%20web%20|%20windows-green.svg)
@@ -14,6 +17,13 @@ flutter run --release
 ```
 
 ## Demo
+
+<p>
+    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_1.png"/>
+    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_2.png"/>
+    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_3.png"/>
+    <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_4.png"/>
+</p>
 
 | Source link                                                                                                 | Light                                                                                                                                                                                      | Dark                                                                                                                                                                                    |
 |-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -46,6 +56,7 @@ flutter run --release
 6.  [SearchBox Usage](#searchbox-usage)
 7.  [Box Controller](#box-controller)
 8.  [Body Builder](#body-builder)
+9.  [showSlidingBox Method](#showslidingbox-method)
 
 
 ## Installation
@@ -54,7 +65,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.0.5
+  flutter_sliding_box: ^1.1.0
 ```
 
 import the plugin package to your dart code
@@ -106,12 +117,12 @@ There are several options that allow for more control:
 | `maxHeight`              | The height of the sliding box when fully `opened`                                                                                                                                                         |
 | `color`                  | The `color` to fill the background of the sliding box                                                                                                                                                     |
 | `borderRadius`           | The corners of the sliding box are rounded by this                                                                                                                                                        |
-| `style`                  | The styles of the sliding box that includes `boxShadow` and `boxUnderBox` and `none`                                                                                                                      |
+| `style`                  | The styles of the sliding box that includes `shadow` and `sheet` and `none`                                                                                                                               |
 | `physics`                | Gets a `ScrollPhysic`, the `physics` determines how the scroll view continues to animate after the user stops dragging the scroll view                                                                    |
-| `draggable`              | Allows toggling of draggability of the sliding box. Tf set this to false, the sliding box cannot be dragged up or down                                                                                    |
+| `draggable`              | Allows toggling of draggability of the sliding box. If set this to false, the sliding box cannot be dragged up or down                                                                                    |
 | `draggableIcon`          | A Icon Widget that is placed in top of the box. Gets a IconData                                                                                                                                           |
-| `draggableIconColor`     | The color of the `draggableIcon`. the position of the icon is top of the box                                                                                                                              |
-| `draggableIconEnabled`   | If set to false, the `draggableIcon` hides. Use the `controller` to open and close sliding box by taps                                                                                                    |
+| `draggableIconColor`     | The color of the `draggableIcon`.                                                                                                                                                                         |
+| `draggableIconVisible`   | If set to false, the `draggableIcon` hides. Use the `controller` to open and close sliding box by taps                                                                                                    |
 | `draggableIconBackColor` | The color to fill the background of the `draggableIcon` icon. The position of the icon is top of the box                                                                                                  |
 | `onBoxSlide`             | This callback is called when the sliding box slides around with position of the box. The position is a double value between `0.0` and `1.0`, where `0.0` is fully `collapsed` and `1.0` is fully `opened` |
 | `onBoxOpen`              | This callback is called when the sliding box is fully opened                                                                                                                                              |
@@ -184,13 +195,13 @@ SlidingBox includes appBar: `BackdropAppBar`
 
 Manually changing the properties of the `BackdropAppBar`
 
-| Properties   | Description                                                                                                                  |
-|--------------|------------------------------------------------------------------------------------------------------------------------------|
-| `title`      | A Widget that is placed on the topLeft of the `backdrop`                                                                     |
-| `leading`    | A `Icon` Widget that is placed in left of the `title`                                                                        |
-| `decoration` | The decoration to paint behind the child                                                                                     |
-| `searchBox`  | An search box to display at the top of the `backdrop`. If non-null, an search `Icon` displayed on topRight of the `backdrop` |
-| `actions`    | A list of Widgets that is placed on the topRight of the `backdrop`                                                           |
+| Properties   | Description                                                                                                                                                                                                                            |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `title`      | A Widget that is placed on the topLeft of the `backdrop`                                                                                                                                                                               |
+| `leading`    | A `Icon` Widget that is placed in left of the BackdropAppBar `title`                                                                                                                                                                   |
+| `decoration` | The decoration of the child                                                                                                                                                                                                            |
+| `searchBox`  | An search box to display at the top of the `backdrop`. add an `IconButton` to `actions` and call `boxController.showSearchBox()` in `onPressed` method. see <a href="https://pub.dev/packages/flutter_sliding_box/example">example</a> |
+| `actions`    | A list of Widgets that is placed on the topRight of the `backdrop`                                                                                                                                                                     |
 
 
 <p>
@@ -271,8 +282,8 @@ Manually changing the properties of the `SearchBox`
 | `inputDecoration` | The `decoration` to show around the search box text field                                                                                                                                                 |
 | `borderRadius`    | The corners of the search box are rounded by this                                                                                                                                                         |
 | `style`           | The `style` to use for the text being edited                                                                                                                                                              |
-| `body`            | A Widget that is placed in the sliding box and under the searching box                                                                                                                                    |
-| `draggableBody`   | Allows toggling of draggability of the sliding box. if set this to `false`, the sliding box cannot be dragged up or down when search box visible. If set this to true, search box invisible when dragging |
+| `body`            | A Widget that is placed in the sliding box (in search mode display the result of search).                                                                                                                 |
+| `draggableBody`   | Allows toggling of draggability of the sliding box. If set this to `false`, the sliding box cannot be dragged up or down when search box visible. If set this to true, search box invisible when dragging |
 
 
 <p>
@@ -339,12 +350,12 @@ SlidingBox `backdrop width` and `body width`
 ```
 
 <p>
- <img width="220px" alt="SlidingBox Box Style underBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_under_box.png"/>
+ <img width="220px" alt="SlidingBox BehindBoxStyle.sheet" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_under_box.png"/>
 
- <img width="220px" alt="SlidingBox Box Style boxShadow" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_shadow.png"/>
+ <img width="220px" alt="SlidingBox BehindBoxStyle.shadow" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_shadow.png"/>
 </p>
 
-SlidingBox includes style: `boxUnderBox` or `boxShadow`
+SlidingBox includes style: `sheet` or `shadow`
 
 ```dart
   @override
@@ -354,7 +365,7 @@ SlidingBox includes style: `boxUnderBox` or `boxShadow`
         context: context,
         minHeight: 200,
         maxHeight: 400,
-        style: BoxStyle.boxUnderBox, // or BoxStyle.boxShadow
+        style: BehindBoxStyle.sheet, // or BehindBoxStyle.shadow
         body: Center(
           child: Text("This is the sliding box widget",
             style: TextStyle(color: Colors.black),),
@@ -555,5 +566,43 @@ When content overflow in body widget, scroll enable automatically, and you can u
          Container(color: Colors.grey, height: 100,),
        ],
      );
+  }
+```
+
+### showSlidingBox Method
+
+#### Using the `showSlidingBox()` method
+
+Display a sliding box easily and simply. Just call `showSlidingBox()` method.
+
+<p>
+ <img width="220px" alt="showSlidingBox Method" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxClose.png"/>
+ 
+<img width="220px" alt="showSlidingBox Method" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxOpen.png"/>
+</p>
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      body: Center(
+        child: MaterialButton(
+          color: Colors.white,
+          onPressed: () {
+            showSlidingBox(
+              context: context,
+                box: SlidingBox(
+                  body: const Center(
+                    child: Text("This is the sliding box widget",
+                      style: TextStyle(color: Colors.black),),
+                ),
+              )
+            );
+          },
+          child: const Text("Show SlidingBox"),
+        ),
+      ),
+    );
   }
 ```

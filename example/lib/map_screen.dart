@@ -73,7 +73,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             .of(context)
             .colorScheme
             .background,
-        style: BoxStyle.boxShadow,
+        style: BehindBoxStyle.shadow,
         backdrop: Backdrop(
           overlay: true,
           color: Theme
@@ -82,61 +82,61 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               .background,
           body: _backdrop(),
           appBar: BackdropAppBar(
-            searchBox: SearchBox(
-              controller: textEditingController,
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .background,
-              style: TextStyle(color:
-              Theme
-                  .of(context)
-                  .colorScheme
-                  .onBackground, fontSize: 18),
-              body: Center(child: Text("Search Result",
-                style: TextStyle(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
-                    fontSize: 20),),),
-              draggableBody: true,
-            ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
-                decoration: BoxDecoration(
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .primary,
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(50),
-                        spreadRadius: 2,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      ),
-                    ]
-                ),
-                child: SizedBox.fromSize(
-                  size: const Size.fromRadius(20),
-                  child: IconButton(
-                    iconSize: 25,
-                    icon: Icon(Icons.search_rounded, size: 27,
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onPrimary),
-                    onPressed: () {
-                      textEditingController.text = "";
-                      boxController.showSearchBox();
-                    },
+              searchBox: SearchBox(
+                controller: textEditingController,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .background,
+                style: TextStyle(color:
+                Theme
+                    .of(context)
+                    .colorScheme
+                    .onBackground, fontSize: 18),
+                body: Center(child: Text("Search Result",
+                  style: TextStyle(
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .onBackground,
+                      fontSize: 20),),),
+                draggableBody: true,
+              ),
+              actions: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+                  decoration: BoxDecoration(
+                      color: Theme
+                          .of(context)
+                          .colorScheme
+                          .primary,
+                      borderRadius: const BorderRadius.all(Radius.circular(50)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withAlpha(50),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ]
+                  ),
+                  child: SizedBox.fromSize(
+                    size: const Size.fromRadius(20),
+                    child: IconButton(
+                      iconSize: 25,
+                      icon: Icon(Icons.search_rounded, size: 27,
+                          color: Theme
+                              .of(context)
+                              .colorScheme
+                              .onPrimary),
+                      onPressed: () {
+                        textEditingController.text = "";
+                        boxController.showSearchBox();
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ]
+              ]
           ),
         ),
         body:_body(),
@@ -190,93 +190,91 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   }
 
   _body() {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-              child: Image.asset(
-                  "assets/images/map/london.jpg", fit: BoxFit.fitWidth),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-            const SizedBox(height: 15,),
-            Text("About London",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21,
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground),),
-            Container(height: 1, color: Theme
-                .of(context)
-                .colorScheme
-                .onBackground
-                .withAlpha(100)),
-            const SizedBox(height: 10,),
-            Text(
-              "London, the capital of England and the United Kingdom, "
-                  "is a 21st-century city with history stretching back to "
-                  "Roman times. At its centre stand the imposing Houses of "
-                  "Parliament, the iconic ‘Big Ben’ clock tower and "
-                  "Westminster Abbey, site of British monarch coronations. "
-                  "Across the Thames River, the London Eye observation wheel "
-                  "provides panoramic views of the South Bank cultural complex, "
-                  "and the entire city.",
-              style: TextStyle(fontSize: 15,
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground),),
-            const SizedBox(height: 15,),
-            Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              padding: const EdgeInsets.all(0),
-              height: 50,
-              decoration: BoxDecoration(
+            child: Image.asset(
+                "assets/images/map/london.jpg", fit: BoxFit.fitWidth),
+          ),
+          const SizedBox(height: 15,),
+          Text("About London",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21,
                 color: Theme
                     .of(context)
                     .colorScheme
-                    .onBackground
-                    .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                      ? 20 : 40),
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
-                    icon: const Icon(Icons.share_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
-                    icon: const Icon(Icons.add_location_alt_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
-                    icon: const Icon(Icons.bookmark_border_rounded),
-                  )
-                ],
-              ),
+                    .onBackground),),
+          Container(height: 1, color: Theme
+              .of(context)
+              .colorScheme
+              .onBackground
+              .withAlpha(100)),
+          const SizedBox(height: 10,),
+          Text(
+            "London, the capital of England and the United Kingdom, "
+                "is a 21st-century city with history stretching back to "
+                "Roman times. At its centre stand the imposing Houses of "
+                "Parliament, the iconic ‘Big Ben’ clock tower and "
+                "Westminster Abbey, site of British monarch coronations. "
+                "Across the Thames River, the London Eye observation wheel "
+                "provides panoramic views of the South Bank cultural complex, "
+                "and the entire city.",
+            style: TextStyle(fontSize: 15,
+                color: Theme
+                    .of(context)
+                    .colorScheme
+                    .onBackground),),
+          const SizedBox(height: 15,),
+          Container(
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+            padding: const EdgeInsets.all(0),
+            height: 50,
+            decoration: BoxDecoration(
+              color: Theme
+                  .of(context)
+                  .colorScheme
+                  .onBackground
+                  .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
+                  ? 20 : 40),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
-          ],
-        ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .onBackground,
+                  icon: const Icon(Icons.share_outlined),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .onBackground,
+                  icon: const Icon(Icons.add_location_alt_outlined),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  color: Theme
+                      .of(context)
+                      .colorScheme
+                      .onBackground,
+                  icon: const Icon(Icons.bookmark_border_rounded),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -294,7 +292,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                 .colorScheme
                 .onBackground
                 .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                  ? 20 : 40),
+                ? 20 : 40),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: Row(
@@ -320,11 +318,11 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         ),
                         child: Text("London",
                           style: TextStyle(fontWeight: FontWeight.normal,
-                              color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground,
-                              fontSize: 21,),),
+                            color: Theme
+                                .of(context)
+                                .colorScheme
+                                .onBackground,
+                            fontSize: 21,),),
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 15, top: 0),
@@ -334,10 +332,10 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         child: Text("England, United Kingdom",
                           style: TextStyle(fontWeight: FontWeight.normal,
                               color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground
-                              .withAlpha(150),
+                                  .of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withAlpha(150),
                               fontSize: 16),),
                       ),
                     ],
@@ -361,7 +359,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                 .colorScheme
                 .onBackground
                 .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                  ? 20 : 40),
+                ? 20 : 40),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: Row(

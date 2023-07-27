@@ -86,7 +86,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             .of(context)
             .colorScheme
             .background,
-        style: BoxStyle.boxUnderBox,
+        style: BehindBoxStyle.sheet,
         backdrop: Backdrop(
           fading: true,
           overlay: false,
