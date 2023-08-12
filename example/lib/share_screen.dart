@@ -54,7 +54,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                   box: SlidingBox(
                     maxHeight: maxHeightBox,
                     color: Colors.white,
-                    style: BehindBoxStyle.shadow,
+                    style: BoxStyle.shadow,
                     draggableIconBackColor: Colors.transparent,
                     body: _body(),
                   )

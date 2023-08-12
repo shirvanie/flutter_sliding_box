@@ -1,4 +1,9 @@
 
+## [1.1.1] - 12 August, 2023
+- Rename `BehindBoxStyle` with `BoxStyle`
+- Update `README.md`
+
+
 ## [1.1.0] - 26 July, 2023
 - Remove `context`
 - Rename `draggableIconEnabled` with `draggableIconVisible`

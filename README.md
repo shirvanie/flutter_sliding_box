@@ -8,9 +8,12 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shirvanie/flutter_sliding_box/blob/master/LICENSE)
 [![likes](https://img.shields.io/pub/likes/flutter_sliding_box?logo=flutter)](https://pub.dev/packages/flutter_sliding_box/score)
 
-A draggable flutter widget that makes it easier to use a SlidingBox panel for all platform. Boxes can be customized with your content and placed in your app.
-<br><br>
-To see examples of the following SlidingBoxes on the device or simulator:
+A draggable flutter widget (like bottom sheet panel) that makes it easier to use a SlidingBox for all platform.
+Boxes can be customized with your content and placed in your app.
+
+<br>
+
+To see examples of the following SlidingBoxes on a device or simulator:
 ```bash
 cd example/
 flutter run --release
@@ -19,32 +22,57 @@ flutter run --release
 ## Demo
 
 <p>
-    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_1.png"/>
-    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_2.png"/>
-    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_3.png"/>
-    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/light_4.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/demo_light_open.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/demo_light_close.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/demo_simple.png"/>
+    <img width="160px" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/demo_search.png"/>
 </p>
 
-| Source link                                                                                                 | Light                                                                                                                                                                                      | Dark                                                                                                                                                                                    |
-|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [example/lib/main.dart](https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/main.dart) | <img width="150px" alt="Default Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/main_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/>  | <img width="150px" alt="Default Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/main_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
+## 
 
-| Source link                                                                                                             | Light                                                                                                                                                                                | Dark                                                                                                                                                                               |
-|-------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [example/lib/map_screen.dart](https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/map_screen.dart) | <img width="150px" alt="Map Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/map_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> | <img width="150px" alt="Map Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/map_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
+| Light                                                                                                                                                                                     | Dark                                                                                                                                                                                    |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img width="150px" alt="Default Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/main_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> | <img width="150px" alt="Default Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/main_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
 
-<br>
+Source Link:
+<a style="display:inline-block;" href="https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/main.dart">
+example/lib/main.dart
+</a>
 
-| Source link                                                                                                                               | Light                                                                                                                                                                                                  | Dark                                                                                                                                                                                                 |
-|-------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [example/lib/music_player_screen.dart](https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/music_player_screen.dart) | <img width="150px" alt="Music Player Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/music_player_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> | <img width="150px" alt="Music Player Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/music_player_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
+## 
 
-<br>
+| Light                                                                                                                                                                                | Dark                                                                                                                                                                               |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img width="150px" alt="Map Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/map_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> | <img width="150px" alt="Map Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/map_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
 
-| Source link                                                                                                                 | Light                                                                                                                                                                                    |
-|-----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [example/lib/share_screen.dart](https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/share_screen.dart) | <img width="150px" alt="Share Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/share_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
+Source Link:
+<a href="https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/map_screen.dart">
+example/lib/map_screen.dart
+</a>
 
+## 
+
+| Light                                                                                                                                                                                                  | Dark                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img width="150px" alt="Music Player Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/music_player_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> | <img width="150px" alt="Music Player Dark" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/music_player_dark.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |
+
+Source Link:
+<a href="https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/music_player_screen.dart">
+example/lib/music_player_screen.dart
+</a>
+
+## 
+
+| <img width="150px" alt="Share Light" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/share_light.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |  
+|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+
+
+Source Link:
+<a href="https://github.com/shirvanie/flutter_sliding_box/blob/master/example/lib/share_screen.dart">
+example/lib/share_screen.dart
+</a>
+
+<br />
 
 # Getting Started
 
@@ -65,7 +93,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.1.0
+  flutter_sliding_box: ^1.1.1
 ```
 
 import the plugin package to your dart code
@@ -83,21 +111,20 @@ import 'package:flutter_sliding_box/flutter_sliding_box.dart';
 by default use SlidingBox as root widget for body (recommended)
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        body: const Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),),
-        ),
-        backdrop: Backdrop(
-          color: Colors.blueGrey,
-        ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      body: const Center(
+        child: Text("This is the sliding box widget",
+          style: TextStyle(color: Colors.black),),
       ),
-    );
-  }
+      backdrop: Backdrop(
+        color: Colors.blueGrey,
+      ),
+    ),
+  );
+}
 ```
 
 ### Custom Usage
@@ -108,7 +135,6 @@ There are several options that allow for more control:
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `body`                   | A widget that slides from `minHeight` to `maxHeight` and is placed on the `backdrop`                                                                                                                      |
 | `bodyBuilder`            | Provides a `ScrollController` to attach to a scrollable widget in the box and current box position. If `body` and `bodyBuilder` are both non-null, `body` will be used                                    |
-| `context`                | required `context` property                                                                                                                                                                               |
 | `controller`             | It can be used to control the state of sliding box and search box                                                                                                                                         |
 | `collapsed`              | If set to true, the state of the box is collapsed                                                                                                                                                         |
 | `collapsedBody`          | The Widget displayed overtop the box when `collapsed`. This fades out as the sliding box is `opened`                                                                                                      |
@@ -162,31 +188,30 @@ SlidingBox includes appBar: `BackdropAppBar`
 ```dart
   BoxController boxController = BoxController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        controller: boxController,
-        minHeight: 200,
-        maxHeight: 400,
-        body: Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),),
-        ),
-        backdrop: Backdrop(
-          color: Colors.blueGrey,
-          appBar: BackdropAppBar(
-            title: Padding(
-                padding: EdgeInsets.all(10),
-                child: Text("AppBar", style: TextStyle(fontSize: 20),)
-            ),
-            leading: Icon(Icons.menu, color: Colors.white, size: 27,),
-          ),
-        ),
-      ),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+ return Scaffold(
+   body: SlidingBox(
+     controller: boxController,
+     minHeight: 200,
+     maxHeight: 400,
+     body: Center(
+       child: Text("This is the sliding box widget",
+         style: TextStyle(color: Colors.black),),
+     ),
+     backdrop: Backdrop(
+       color: Colors.blueGrey,
+       appBar: BackdropAppBar(
+         title: Padding(
+           padding: EdgeInsets.all(10), 
+           child: Text("AppBar", style: TextStyle(fontSize: 20),)
+         ),
+         leading: Icon(Icons.menu, color: Colors.white, size: 27,),
+       ),
+     ),
+   ),
+ );
+}
 ```
 
 ### Backdrop AppBar Usage
@@ -204,68 +229,64 @@ Manually changing the properties of the `BackdropAppBar`
 | `actions`    | A list of Widgets that is placed on the topRight of the `backdrop`                                                                                                                                                                     |
 
 
-<p>
- <img width="220px" alt="SlidingBox AppBar SearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/app_bar_search_icon.png"/>
-
- <img width="220px" alt="SlidingBox AppBar SearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/app_bar_search_body.png"/>
-</p>
+| <img width="220px" alt="SlidingBox AppBar SearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/app_bar_search_icon.png"/> | <img width="220px" alt="SlidingBox AppBar SearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/app_bar_search_body.png"/> |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 
 SlidingBox appBar includes searchBox: `SearchBox`
 
 ```dart
-  BoxController boxController = BoxController();
-  TextEditingController textEditingController = TextEditingController();
+BoxController boxController = BoxController();
+TextEditingController textEditingController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        controller: boxController,
-        minHeight: 200,
-        maxHeight: MediaQuery.of(context).size.height - 100,
-        body: Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),),
-        ),
-        backdrop: Backdrop(
-          color: Colors.blueGrey,
-          appBar: BackdropAppBar(
-            title: Padding(
-                padding: EdgeInsets.all(10),
-                child: Text("AppBar", style: TextStyle(fontSize: 20),)
-            ),
-            leading: Icon(Icons.menu, color: Colors.white, size: 27,),
-            searchBox: SearchBox(
-              controller: textEditingController,
-              body: Center(
-                child: Text("This is the search box body widget",
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ),
-            actions: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: SizedBox.fromSize(
-                  size: const Size.fromRadius(25),
-                  child: IconButton(
-                    iconSize: 25,
-                    icon: Icon(Icons.search, color: Colors.white, size: 27,),
-                    onPressed: () {
-                      textEditingController.text = "";
-                      boxController.showSearchBox();
-                    },
-                  ),
-                ),
-              ),
-            ]
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      controller: boxController,
+      minHeight: 200,
+      maxHeight: MediaQuery.of(context).size.height - 100,
+      body: Center(
+        child: Text("This is the sliding box widget",
+          style: TextStyle(color: Colors.black),),
+      ),
+      backdrop: Backdrop(
+        color: Colors.blueGrey,
+        appBar: BackdropAppBar(
+          title: Padding(
+            padding: EdgeInsets.all(10),
+            child: Text("AppBar", style: TextStyle(fontSize: 20),)
           ),
+          leading: Icon(Icons.menu, color: Colors.white, size: 27,),
+          searchBox: SearchBox(
+            controller: textEditingController,
+            body: Center(
+              child: Text("This is the search box body widget",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ),
+          actions: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: SizedBox.fromSize(
+                size: const Size.fromRadius(25),
+                child: IconButton(
+                  iconSize: 25,
+                  icon: Icon(Icons.search, color: Colors.white, size: 27,),
+                  onPressed: () {
+                    textEditingController.text = "";
+                    boxController.showSearchBox();
+                  },
+                ),
+              ),
+            ),
+          ]
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 ```
 
 ### SearchBox Usage
@@ -286,11 +307,8 @@ Manually changing the properties of the `SearchBox`
 | `draggableBody`   | Allows toggling of draggability of the sliding box. If set this to `false`, the sliding box cannot be dragged up or down when search box visible. If set this to true, search box invisible when dragging |
 
 
-<p>
- <img width="220px" alt="SlidingBox Backdrop Overlay" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_overlay_collapsed.png"/>
-
- <img width="220px" alt="SlidingBox Backdrop Overlay" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_overlay_opened.png"/>
-</p>
+| <img width="220px" alt="SlidingBox Backdrop Overlay" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_overlay_collapsed.png"/> | <img width="220px" alt="SlidingBox Backdrop Overlay" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_overlay_opened.png"/> |
+|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 SlidingBox backdrop includes overlay: `true`
 
@@ -299,83 +317,74 @@ SlidingBox backdrop includes overlay: `true`
 you can customize `overlayOpacity` (a value between `0.0` and `1.0`), default value is `0.5`
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        body: const Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-        backdrop: Backdrop(
-          overlay: true,
-          overlayOpacity: 0.5,
-          color: Colors.grey,
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      body: const Center(
+        child: Text("This is the sliding box widget",
+          style: TextStyle(color: Colors.black),
         ),
       ),
-    );
-  }
+      backdrop: Backdrop(
+        overlay: true,
+        overlayOpacity: 0.5,
+        color: Colors.grey,
+      ),
+    ),
+  );
+}
 ```
 
-<p>
- <img width="220px" alt="SlidingBox Backdrop Width" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_width.png"/>
-
- <img width="220px" alt="SlidingBox Backdrop Width" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_width.png"/>
-</p>
+|        <img width="220px" alt="SlidingBox Backdrop Width" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/backdrop_width.png"/>         |         <img width="220px" alt="SlidingBox Backdrop Width" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_width.png"/>          |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 SlidingBox `backdrop width` and `body width`
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        width: MediaQuery.of(context).size.width - 50,
-        minHeight: 200,
-        maxHeight: 400,
-        body: Center(
-          child: Text("This is the sliding box widget",
-           style: TextStyle(color: Colors.black),),
-        ),
-        backdrop: Backdrop(
-          width: MediaQuery.of(context).size.width - 100,
-          color: Colors.blueGrey,
-        ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      width: MediaQuery.of(context).size.width - 50,
+      minHeight: 200,
+      maxHeight: 400,
+      body: Center(
+        child: Text("This is the sliding box widget",
+        style: TextStyle(color: Colors.black),),
       ),
-    );
-  }
+      backdrop: Backdrop(
+        width: MediaQuery.of(context).size.width - 100,
+        color: Colors.blueGrey,
+      ),
+    ),
+  );
+}
 ```
 
-<p>
- <img width="220px" alt="SlidingBox BehindBoxStyle.sheet" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_under_box.png"/>
-
- <img width="220px" alt="SlidingBox BehindBoxStyle.shadow" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_shadow.png"/>
-</p>
+| <img width="220px" alt="SlidingBox BoxStyle.sheet" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_under_box.png"/> | <img width="220px" alt="SlidingBox BoxStyle.shadow" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_style_shadow.png"/> |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 SlidingBox includes style: `sheet` or `shadow`
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        minHeight: 200,
-        maxHeight: 400,
-        style: BehindBoxStyle.sheet, // or BehindBoxStyle.shadow
-        body: Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),),
-        ),
-        backdrop: Backdrop(
-          color: Colors.blueGrey,
-        ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      minHeight: 200,
+      maxHeight: 400,
+      style: BoxStyle.sheet, // or BoxStyle.shadow
+      body: Center(
+        child: Text("This is the sliding box widget",
+          style: TextStyle(color: Colors.black),),
       ),
-    );
-  }
+      backdrop: Backdrop(
+        color: Colors.blueGrey,
+      ),
+    ),
+  );
+}
 ```
 
 ### Box Controller
@@ -408,109 +417,105 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
 | `setPosition()`   | `Future<void>` | Sets the sliding box position with animation (a value between `0.0` and `1.0)` |
 | `setSearchBody()` | `Future<void>` | Sets the search box `body` content                                             |
 
-<p>
- <img width="220px" alt="BoxController" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller1.png"/>
-
- <img width="220px" alt="BoxController ShowSearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller2.png"/>
-</p>
+| <img width="220px" alt="BoxController" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller1.png"/> | <img width="220px" alt="BoxController ShowSearchBox" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/box_controller2.png"/> |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 ```dart
-  BoxController boxController = BoxController();
-  TextEditingController textEditingController = TextEditingController();
+BoxController boxController = BoxController();
+TextEditingController textEditingController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        controller: boxController,
-        minHeight: 200,
-        maxHeight: MediaQuery.of(context).size.height - 100,
-        body: const Center(
-          child: Text("This is the sliding box widget",
-            style: TextStyle(color: Colors.black),),
-        ),
-        collapsed: true,
-        backdrop: Backdrop(
-          color: Colors.blueGrey,
-          appBar: BackdropAppBar(
-              searchBox: SearchBox(
-                controller: textEditingController,
-                body: Center(
-                  child: MaterialButton(
-                    child: Text("Hide SearchBox"),
-                    onPressed: () {
-                      boxController.hideSearchBox();
-                      boxController.closeBox();
-                    },
-                    color: Colors.blueGrey,
-                    textColor: Colors.white,
-                  ),
-                ),
-                draggableBody: true,
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      controller: boxController,
+      minHeight: 200,
+      maxHeight: MediaQuery.of(context).size.height - 100,
+      body: const Center(
+        child: Text("This is the sliding box widget",
+          style: TextStyle(color: Colors.black),),
+      ),
+      collapsed: true,
+      backdrop: Backdrop(
+        color: Colors.blueGrey,
+        appBar: BackdropAppBar(
+          searchBox: SearchBox(
+            controller: textEditingController,
+            body: Center(
+              child: MaterialButton(
+                child: Text("Hide SearchBox"),
+                onPressed: () {
+                  boxController.hideSearchBox();
+                  boxController.closeBox();
+                },
+                color: Colors.blueGrey,
+                textColor: Colors.white,
               ),
-              actions: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: SizedBox.fromSize(
-                    size: const Size.fromRadius(25),
-                    child: IconButton(
-                      iconSize: 25,
-                      icon: Icon(Icons.search, color: Colors.white, size: 27,),
-                      onPressed: () {
-                        textEditingController.text = "";
-                        boxController.showSearchBox();
-                      },
-                    ),
-                  ),
-                ),
-              ]
+            ),
+            draggableBody: true,
           ),
-          body: SingleChildScrollView(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MaterialButton(
-                    child: Text("Open"),
-                    onPressed: () => boxController.openBox(),
-                    color: Colors.white,
-                  ),
-                  MaterialButton(
-                    child: Text("Close"),
-                    onPressed: () => boxController.closeBox(),
-                    color: Colors.white,
-                  ),
-                  MaterialButton(
-                    child: Text("Show"),
-                    onPressed: () => boxController.showBox(),
-                    color: Colors.white,
-                  ),
-                  MaterialButton(
-                    child: Text("Hide"),
-                    onPressed: () => boxController.hideBox(),
-                    color: Colors.white,
-                  ),
-                  MaterialButton(
-                    child: Text("Show SearchBox"),
-                    onPressed: () => boxController.showSearchBox(),
-                    color: Colors.white,
-                  ),
-                  MaterialButton(
-                    child: Text("Hide SearchBox"),
-                    onPressed: () => boxController.hideSearchBox(),
-                    color: Colors.white,
-                  ),
-                ],
+          actions: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: SizedBox.fromSize(
+                size: const Size.fromRadius(25),
+                child: IconButton(
+                  iconSize: 25,
+                  icon: Icon(Icons.search, color: Colors.white, size: 27,),
+                  onPressed: () {
+                    textEditingController.text = "";
+                    boxController.showSearchBox();
+                  },
+                ),
               ),
+            ),
+          ]
+        ),
+        body: SingleChildScrollView(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MaterialButton(
+                  child: Text("Open"),
+                  onPressed: () => boxController.openBox(),
+                  color: Colors.white,
+                ),
+                MaterialButton(
+                  child: Text("Close"),
+                  onPressed: () => boxController.closeBox(),
+                  color: Colors.white,
+                ),
+                MaterialButton(
+                  child: Text("Show"),
+                  onPressed: () => boxController.showBox(),
+                  color: Colors.white,
+                ),
+                MaterialButton(
+                  child: Text("Hide"),
+                  onPressed: () => boxController.hideBox(),
+                  color: Colors.white,
+                ),
+                MaterialButton(
+                  child: Text("Show SearchBox"),
+                  onPressed: () => boxController.showSearchBox(),
+                  color: Colors.white,
+                ),
+                MaterialButton(
+                  child: Text("Hide SearchBox"),
+                  onPressed: () => boxController.hideSearchBox(),
+                  color: Colors.white,
+                ),
+              ],
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 ```
 
 <br>
@@ -520,53 +525,47 @@ Manually changing the state of the `SlidingBox`. For better performance, use a `
 #### Using the `bodyBuilder`
 
 When content overflow in body widget, scroll enable automatically, and you can using the body builder to manage and control `scroll` and box `position`.
-<p>
- <img width="220px" alt="SlidingBox BodyBuilder collapsed" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_collapsed.png"/>
 
- <img width="220px" alt="SlidingBox BodyBuilder dragged" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_dragged.png"/>
-
- <img width="220px" alt="SlidingBox BodyBuilder opened" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_opened.png"/>
-</p>
-
+| <img width="220px" alt="SlidingBox BodyBuilder collapsed" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_collapsed.png"/> | <img width="220px" alt="SlidingBox BodyBuilder dragged" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_dragged.png"/> | <img width="220px" alt="SlidingBox BodyBuilder opened" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/body_builder_opened.png"/> |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SlidingBox(
-        context: context,
-        minHeight: 200,
-        maxHeight: 400,
-        bodyBuilder: (sc, pos) => _body(sc, pos),
-        backdrop: Backdrop(
-           color: Colors.blueGrey,
-        ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SlidingBox(
+      minHeight: 200,
+      maxHeight: 400,
+      bodyBuilder: (sc, pos) => _body(sc, pos),
+      backdrop: Backdrop(
+        color: Colors.blueGrey,
       ),
-    );
-  }
- 
-  _body(ScrollController sc, double pos) {
-     sc.addListener(() {
-       print("scrollController position: ${sc.position.pixels}");
-     });
-     return Column(
-       children: [
-         SizedBox(height: 10,),
-         Center(
-           child: Text("box position: $pos",
-              style: TextStyle(color: Colors.black),),
-         ),
-         SizedBox(height: 10,),
-         Container(color: Colors.grey, height: 100,),
-         SizedBox(height: 10,),
-         Container(color: Colors.grey, height: 100,),
-         SizedBox(height: 10,),
-         Container(color: Colors.grey, height: 100,),
-         SizedBox(height: 10,),
-         Container(color: Colors.grey, height: 100,),
-       ],
-     );
-  }
+    ),
+  );
+}
+
+_body(ScrollController sc, double pos) {
+  sc.addListener(() {
+    print("scrollController position: ${sc.position.pixels}");
+  });
+  return Column(
+    children: [
+      SizedBox(height: 10,),
+      Center(
+        child: Text("box position: $pos",
+          style: TextStyle(color: Colors.black),),
+      ),
+      SizedBox(height: 10,),
+      Container(color: Colors.grey, height: 100,),
+      SizedBox(height: 10,),
+      Container(color: Colors.grey, height: 100,),
+      SizedBox(height: 10,),
+      Container(color: Colors.grey, height: 100,),
+      SizedBox(height: 10,),
+      Container(color: Colors.grey, height: 100,),
+    ],
+  );
+}
 ```
 
 ### showSlidingBox Method
@@ -575,34 +574,32 @@ When content overflow in body widget, scroll enable automatically, and you can u
 
 Display a sliding box easily and simply. Just call `showSlidingBox()` method.
 
-<p>
- <img width="220px" alt="showSlidingBox Method" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxClose.png"/>
- 
-<img width="220px" alt="showSlidingBox Method" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxOpen.png"/>
-</p>
+| <img width="220px" alt="showSlidingBox Method" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxClose.png"/> | <img width="220px" alt="showSlidingBoxOpen" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/showSlidingBoxOpen.png"/> |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 
 ```dart
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: Center(
-        child: MaterialButton(
-          color: Colors.white,
-          onPressed: () {
-            showSlidingBox(
-              context: context,
-                box: SlidingBox(
-                  body: const Center(
-                    child: Text("This is the sliding box widget",
-                      style: TextStyle(color: Colors.black),),
-                ),
-              )
-            );
-          },
-          child: const Text("Show SlidingBox"),
-        ),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Colors.blueGrey,
+    body: Center(
+      child: MaterialButton(
+        color: Colors.white,
+        onPressed: () {
+          // SlidingBox Modal
+          showSlidingBox( 
+            context: context,
+            box: SlidingBox(
+              body: const Center(
+                child: Text("This is the sliding box widget",
+                  style: TextStyle(color: Colors.black),),
+              ),
+            )
+          );
+        },
+        child: const Text("Show SlidingBox"),
       ),
-    );
-  }
+    ),
+  );
+}
 ```

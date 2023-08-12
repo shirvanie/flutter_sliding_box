@@ -29,7 +29,7 @@ class SlidingBox extends StatefulWidget {
 
   /// The styles behind of the sliding box that includes
   /// shadow and sheet and none
-  final BehindBoxStyle? style;
+  final BoxStyle? style;
 
   /// A widget that slides from [minHeight] to [maxHeight] and is placed on the
   /// backdrop
@@ -114,7 +114,7 @@ class SlidingBox extends StatefulWidget {
     this.color = Colors.white,
     this.borderRadius = const BorderRadius.only(topLeft: Radius.circular(30),
       topRight: Radius.circular(30),),
-    this.style = BehindBoxStyle.none,
+    this.style = BoxStyle.none,
     this.body,
     this.bodyBuilder,
     this.physics = const BouncingScrollPhysics(),
@@ -496,7 +496,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
           builder: (_, child) {
             return Stack(
               children: <Widget>[
-                if(widget.style == BehindBoxStyle.sheet) Align(
+                if(widget.style == BoxStyle.sheet) Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     margin: EdgeInsets.only(top: _isSearchBoxVisible ? 55 : 0),
@@ -543,7 +543,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
                             _animationController.value) *
                             widget.borderRadius!.bottomLeft.y,),
                       ),
-                      boxShadow: (widget.style == BehindBoxStyle.shadow)
+                      boxShadow: (widget.style == BoxStyle.shadow)
                           ? [
                         BoxShadow(
                           color: Colors.black.withAlpha(widget.minHeight! > 0
@@ -1038,7 +1038,7 @@ class BoxController extends ValueNotifier<MenuIconValue> {
   }
 }
 
-enum BehindBoxStyle{
+enum BoxStyle{
   none,
   shadow,
   sheet,
