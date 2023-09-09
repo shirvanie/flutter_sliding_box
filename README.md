@@ -93,7 +93,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.1.2
+  flutter_sliding_box: ^1.1.3
 ```
 
 import the plugin package to your dart code

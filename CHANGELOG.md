@@ -1,4 +1,8 @@
 
+## [1.1.3] - 9 September, 2023
+- dart format fixed - example 
+
+
 ## [1.1.2] - 9 September, 2023
 - dart format fixed
 
