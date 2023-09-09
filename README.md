@@ -80,7 +80,7 @@ example/lib/share_screen.dart
 2.  [Usage](#usage)
 3.  [Custom Usage](#custom-usage)
 4.  [Backdrop Usage](#backdrop-usage)
-5.  [Backdrop AppBar Usage](#backdrop-appBar-usage)
+5.  [Backdrop AppBar Usage](#backdrop-appbar-usage)
 6.  [SearchBox Usage](#searchbox-usage)
 7.  [Box Controller](#box-controller)
 8.  [Body Builder](#body-builder)
@@ -93,7 +93,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.1.1
+  flutter_sliding_box: ^1.1.2
 ```
 
 import the plugin package to your dart code
@@ -186,7 +186,7 @@ Manually changing the properties of the  `Backdrop`
 SlidingBox includes appBar: `BackdropAppBar`
 
 ```dart
-  BoxController boxController = BoxController();
+BoxController boxController = BoxController();
 
 @override
 Widget build(BuildContext context) {

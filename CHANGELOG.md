@@ -1,4 +1,8 @@
 
+## [1.1.2] - 9 September, 2023
+- dart format fixed
+
+
 ## [1.1.1] - 12 August, 2023
 - Rename `BehindBoxStyle` with `BoxStyle`
 - Update `README.md`

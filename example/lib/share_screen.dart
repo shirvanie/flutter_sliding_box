@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sliding_box/flutter_sliding_box.dart';
 
-void main() { runApp(const SlidingBoxExampleApp()); }
+void main() {
+  runApp(const SlidingBoxExampleApp());
+}
 
 class SlidingBoxExampleApp extends StatelessWidget {
   const SlidingBoxExampleApp({super.key});
@@ -26,18 +28,13 @@ class SlidingBoxExamplePage extends StatefulWidget {
 }
 
 class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light
-    ));
+        statusBarIconBrightness: Brightness.light));
     //
-    double maxHeightBox = MediaQuery
-        .of(context)
-        .size
-        .height * 0.4;
+    double maxHeightBox = MediaQuery.of(context).size.height * 0.4;
     //
     return Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -57,13 +54,14 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     style: BoxStyle.shadow,
                     draggableIconBackColor: Colors.transparent,
                     body: _body(),
-                  )
-              );
+                  ));
             },
             child: const Row(
               children: [
                 Icon(Icons.share_outlined),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Text("Share")
               ],
             ),
@@ -72,7 +70,6 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
       ),
     );
   }
-
 
   _body() {
     return Column(
@@ -85,132 +82,164 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           decoration: BoxDecoration(
               border: Border(
                   bottom: BorderSide(
-                    width: 1,
-                    color: Colors.black.withAlpha(30),
-                  )
-              )
-          ),
+            width: 1,
+            color: Colors.black.withAlpha(30),
+          ))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               MaterialShareIconButton(
                 icon: const Icon(Icons.share_outlined, size: 27),
                 text: const Text("Share"),
-                onPressed: () { },
+                onPressed: () {},
               ),
               MaterialShareIconButton(
                 icon: const Icon(Icons.link_outlined, size: 27),
                 text: const Text("Copy link"),
-                onPressed: () { },
+                onPressed: () {},
               ),
               MaterialShareIconButton(
                 icon: const Icon(CupertinoIcons.mail, size: 27),
                 text: const Text("Send mail"),
-                onPressed: () { },
+                onPressed: () {},
               ),
               MaterialShareIconButton(
                 icon: const Icon(Icons.sms_outlined, size: 27),
                 text: const Text("Send SMS"),
-                onPressed: () { },
+                onPressed: () {},
               ),
             ],
           ),
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
         MaterialListItem(
-          title: const Text("User Name",
+          title: const Text(
+            "User Name",
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            ),),
-          description: Text("User FullName",
+            ),
+          ),
+          description: Text(
+            "User FullName",
             style: TextStyle(
               color: Colors.black.withAlpha(120),
               fontSize: 13,
-            ),),
+            ),
+          ),
           image: Image.asset(
-            "assets/images/share/user_avatar.jpg", fit: BoxFit.cover,),
-          onPressed: () { },
+            "assets/images/share/user_avatar.jpg",
+            fit: BoxFit.cover,
+          ),
+          onPressed: () {},
         ),
-
       ],
     );
   }
-
 }
 
 class MaterialShareIconButton extends StatelessWidget {
@@ -287,19 +316,16 @@ class MaterialListItem extends StatelessWidget {
               ),
               Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.only(left: 15, top: 0),
-                          child: title
-                      ),
-                      Container(
-                          margin: const EdgeInsets.only(left: 15, top: 2),
-                          child: description
-                      ),
-                    ],
-                  )
-              ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      margin: const EdgeInsets.only(left: 15, top: 0),
+                      child: title),
+                  Container(
+                      margin: const EdgeInsets.only(left: 15, top: 2),
+                      child: description),
+                ],
+              )),
               Container(
                 width: 60,
                 height: 30,
@@ -314,8 +340,7 @@ class MaterialListItem extends StatelessWidget {
                     splashColor: Colors.black.withAlpha(50),
                     highlightColor: Colors.black.withAlpha(50),
                     onPressed: onPressed,
-                    child: const Text("Send")
-                ),
+                    child: const Text("Send")),
               ),
             ],
           ),

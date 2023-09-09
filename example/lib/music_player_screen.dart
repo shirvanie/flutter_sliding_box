@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sliding_box/flutter_sliding_box.dart';
 
-void main() { runApp(const SlidingBoxExampleApp()); }
+void main() {
+  runApp(const SlidingBoxExampleApp());
+}
 
 class SlidingBoxExampleApp extends StatelessWidget {
   const SlidingBoxExampleApp({super.key});
@@ -28,7 +30,6 @@ class SlidingBoxExamplePage extends StatefulWidget {
 }
 
 class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
-
   final BoxController boxController = BoxController();
   final TextEditingController textEditingController = TextEditingController();
 
@@ -36,11 +37,15 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   void initState() {
     super.initState();
     textEditingController.addListener(() {
-      boxController.setSearchBody(child: Center(
-        child: Text(textEditingController.text != ""
-            ? textEditingController.value.text : "Empty",
-          style: TextStyle(color: Theme.of(context).colorScheme.onBackground,
-              fontSize: 20),),
+      boxController.setSearchBody(
+          child: Center(
+        child: Text(
+          textEditingController.text != ""
+              ? textEditingController.value.text
+              : "Empty",
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground, fontSize: 20),
+        ),
       ));
     });
   }
@@ -49,35 +54,26 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: SlidingBoxExampleApp.themeMode ==
-            ThemeMode.light ? Brightness.dark : Brightness.light,
-        statusBarBrightness: SlidingBoxExampleApp.themeMode ==
-            ThemeMode.light ? Brightness.dark : Brightness.light,
-        systemNavigationBarIconBrightness: SlidingBoxExampleApp.themeMode ==
-            ThemeMode.light ? Brightness.dark : Brightness.light,
-        systemNavigationBarColor: SlidingBoxExampleApp.themeMode ==
-            ThemeMode.light
-            ? Theme
-            .of(context)
-            .colorScheme
-            .onBackground
-            .withAlpha(10)
-            : Theme
-            .of(context)
-            .colorScheme
-            .background
-    ));
+        statusBarIconBrightness:
+            SlidingBoxExampleApp.themeMode == ThemeMode.light
+                ? Brightness.dark
+                : Brightness.light,
+        statusBarBrightness: SlidingBoxExampleApp.themeMode == ThemeMode.light
+            ? Brightness.dark
+            : Brightness.light,
+        systemNavigationBarIconBrightness:
+            SlidingBoxExampleApp.themeMode == ThemeMode.light
+                ? Brightness.dark
+                : Brightness.light,
+        systemNavigationBarColor:
+            SlidingBoxExampleApp.themeMode == ThemeMode.light
+                ? Theme.of(context).colorScheme.onBackground.withAlpha(10)
+                : Theme.of(context).colorScheme.background));
     //
-    double appBarHeight = MediaQuery
-        .of(context)
-        .size
-        .height * 0.1;
+    double appBarHeight = MediaQuery.of(context).size.height * 0.1;
     if (appBarHeight < 85) appBarHeight = 85;
     double minHeightBox = 60;
-    double maxHeightBox = MediaQuery
-        .of(context)
-        .size
-        .height - appBarHeight;
+    double maxHeightBox = MediaQuery.of(context).size.height - appBarHeight;
     //
     return Scaffold(
       body: SlidingBox(
@@ -90,45 +86,34 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           fading: true,
           overlay: false,
           color: SlidingBoxExampleApp.themeMode == ThemeMode.light
-              ? Theme
-              .of(context)
-              .colorScheme
-              .onBackground
-              .withAlpha(15)
-              : Theme
-              .of(context)
-              .colorScheme
-              .background,
+              ? Theme.of(context).colorScheme.onBackground.withAlpha(15)
+              : Theme.of(context).colorScheme.background,
           body: _backdrop(),
           appBar: BackdropAppBar(
               title: Container(
                 margin: const EdgeInsets.only(left: 15),
-                child: Text("Music Player", style: TextStyle(
-                  fontSize: 22,
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
-                ),),
+                child: Text(
+                  "Music Player",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                ),
               ),
               searchBox: SearchBox(
                 controller: textEditingController,
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .background,
-                style: TextStyle(color:
-                Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground, fontSize: 18),
-                body: Center(child: Text("Search Result",
-                  style: TextStyle(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground,
-                      fontSize: 20),),),
+                color: Theme.of(context).colorScheme.background,
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 18),
+                body: Center(
+                  child: Text(
+                    "Search Result",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 20),
+                  ),
+                ),
                 draggableBody: true,
               ),
               actions: [
@@ -138,11 +123,10 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     size: const Size.fromRadius(25),
                     child: IconButton(
                       iconSize: 27,
-                      icon: Icon(Icons.search_rounded,
-                        color: Theme
-                            .of(context)
-                            .colorScheme
-                            .onPrimary,),
+                      icon: Icon(
+                        Icons.search_rounded,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                       onPressed: () {
                         textEditingController.text = "";
                         boxController.showSearchBox();
@@ -150,10 +134,9 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     ),
                   ),
                 ),
-              ]
-          ),
+              ]),
         ),
-        body: _body(),
+        body: _body(height: maxHeightBox),
         draggableIconVisible: false,
         collapsed: true,
         collapsedBody: _collapsedBody(),
@@ -172,56 +155,55 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             child: Row(
               children: [
                 TextButton(
-                  onPressed: () { },
-                  child: Text("Tracks",
-                    style: TextStyle(color: Theme
-                        .of(context)
-                        .colorScheme
-                        .onBackground,
+                  onPressed: () {},
+                  child: Text(
+                    "Tracks",
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 22,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
                 ),
                 TextButton(
-                    onPressed: () { },
-                    child: Text("Playlists",
-                      style: TextStyle(color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(100),
+                    onPressed: () {},
+                    child: Text(
+                      "Playlists",
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withAlpha(100),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
-                    )
-                ),
+                    )),
                 TextButton(
-                    onPressed: () { },
-                    child: Text("Favorites",
-                      style: TextStyle(color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(100),
+                    onPressed: () {},
+                    child: Text(
+                      "Favorites",
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withAlpha(100),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
-                    )
-                ),
+                    )),
                 TextButton(
-                    onPressed: () { },
-                    child: Text("Folders",
-                      style: TextStyle(color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(100),
+                    onPressed: () {},
+                    child: Text(
+                      "Folders",
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withAlpha(100),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
-                    )
-                ),
+                    )),
               ],
             ),
           ),
@@ -229,15 +211,8 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             child: Container(
               decoration: BoxDecoration(
                 color: SlidingBoxExampleApp.themeMode == ThemeMode.light
-                    ? Theme
-                    .of(context)
-                    .colorScheme
-                    .background
-                    : Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground
-                    .withAlpha(15),
+                    ? Theme.of(context).colorScheme.background
+                    : Theme.of(context).colorScheme.onBackground.withAlpha(15),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
@@ -253,23 +228,27 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () { },
+                            onPressed: () {},
                             child: Row(
                               children: [
-                                Icon(CupertinoIcons.sort_down,
-                                  size: 23, color: Theme
-                                      .of(context)
+                                Icon(
+                                  CupertinoIcons.sort_down,
+                                  size: 23,
+                                  color: Theme.of(context)
                                       .colorScheme
                                       .onBackground
                                       .withAlpha(150),
                                 ),
-                                const SizedBox(width: 5,),
-                                Text("Date added",
-                                  style: TextStyle(color: Theme
-                                      .of(context)
-                                      .colorScheme
-                                      .onBackground
-                                      .withAlpha(150),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Date added",
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground
+                                        .withAlpha(150),
                                     fontSize: 13,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -284,23 +263,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                                 height: 32,
                                 margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                    color: Theme
-                                        .of(context)
+                                    color: Theme.of(context)
                                         .colorScheme
                                         .onBackground
                                         .withAlpha(15),
-                                    borderRadius: const BorderRadius.all(Radius.circular(30))
-                                ),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(30))),
                                 child: IconButton(
-                                  onPressed: () { },
-                                  highlightColor: Theme
-                                      .of(context)
+                                  onPressed: () {},
+                                  highlightColor: Theme.of(context)
                                       .colorScheme
                                       .onBackground
                                       .withAlpha(50),
-                                  icon: Icon(CupertinoIcons.shuffle,
-                                    size: 16, color: Theme
-                                        .of(context)
+                                  icon: Icon(
+                                    CupertinoIcons.shuffle,
+                                    size: 16,
+                                    color: Theme.of(context)
                                         .colorScheme
                                         .onBackground,
                                   ),
@@ -311,23 +289,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                                 height: 32,
                                 margin: const EdgeInsets.only(right: 10),
                                 decoration: BoxDecoration(
-                                    color: Theme
-                                        .of(context)
+                                    color: Theme.of(context)
                                         .colorScheme
                                         .onBackground
                                         .withAlpha(15),
-                                    borderRadius: const BorderRadius.all(Radius.circular(30))
-                                ),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(30))),
                                 child: IconButton(
-                                  onPressed: () { },
-                                  highlightColor: Theme
-                                      .of(context)
+                                  onPressed: () {},
+                                  highlightColor: Theme.of(context)
                                       .colorScheme
                                       .onBackground
                                       .withAlpha(50),
-                                  icon: Icon(CupertinoIcons.play_arrow_solid,
-                                    size: 16, color: Theme
-                                        .of(context)
+                                  icon: Icon(
+                                    CupertinoIcons.play_arrow_solid,
+                                    size: 16,
+                                    color: Theme.of(context)
                                         .colorScheme
                                         .onBackground,
                                   ),
@@ -339,217 +316,256 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                       ),
                     ),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
                     MaterialListItem(
-                        title: Text("Title",
-                          style: TextStyle(fontSize: 19,
+                        title: Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 19,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground),),
-                        description: Text("Artist, Album",
-                          style: TextStyle(fontSize: 13,
+                              color:
+                                  Theme.of(context).colorScheme.onBackground),
+                        ),
+                        description: Text(
+                          "Artist, Album",
+                          style: TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
+                              color: Theme.of(context)
                                   .colorScheme
                                   .onBackground
-                                  .withAlpha(150)),),
+                                  .withAlpha(150)),
+                        ),
                         image: Image.asset(
-                          "assets/images/music_player/music.jpg", fit: BoxFit.cover,),
-                        onPressed: () { },
-                        onMorePressed: () { }
-                    ),
-                  ]
-              ),
+                          "assets/images/music_player/music.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                        onPressed: () {},
+                        onMorePressed: () {}),
+                  ]),
             ),
           ),
         ],
@@ -557,94 +573,72 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
     );
   }
 
-  _body() {
+  _body({required double height}) {
     return Container(
-      height: boxController.isAttached ? boxController.maxHeight : null,
+      height: height,
       decoration: BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              const Color(0xFFFF850A).withAlpha(SlidingBoxExampleApp.themeMode ==
-                  ThemeMode.light? 150 : 100),
+              const Color(0xFFFF850A).withAlpha(
+                  SlidingBoxExampleApp.themeMode == ThemeMode.light
+                      ? 150
+                      : 200),
               SlidingBoxExampleApp.themeMode == ThemeMode.light
-                  ? Theme
-                  .of(context)
-                  .colorScheme
-                  .onBackground
-                  .withAlpha(15)
-                  : Theme
-                  .of(context)
-                  .colorScheme
-                  .background
-            ]
-        ),
+                  ? Theme.of(context).colorScheme.onBackground.withAlpha(15)
+                  : Theme.of(context).colorScheme.background
+            ]),
       ),
-      child: Stack(
+      child: Column(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              height: 45,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        if(boxController.isAttached) boxController.closeBox();
-                      },
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground,
-                      iconSize: 24,
-                      icon: const Icon(CupertinoIcons.chevron_down)
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                          onPressed: () { },
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground,
-                          iconSize: 21,
-                          icon: const Icon(Icons.share_outlined)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground,
-                          iconSize: 22,
-                          icon: const Icon(CupertinoIcons.volume_up)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground,
-                          iconSize: 22,
-                          icon: const Icon(Icons.more_vert_rounded)
-                      ),
-                    ],
-                  )
-                ],
-              ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            height: 45,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      if (boxController.isAttached) boxController.closeBox();
+                    },
+                    color: Theme.of(context).colorScheme.onBackground,
+                    iconSize: 24,
+                    icon: const Icon(CupertinoIcons.chevron_down)),
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        color: Theme.of(context).colorScheme.onBackground,
+                        iconSize: 21,
+                        icon: const Icon(Icons.share_outlined)),
+                    IconButton(
+                        onPressed: () {},
+                        color: Theme.of(context).colorScheme.onBackground,
+                        iconSize: 22,
+                        icon: const Icon(CupertinoIcons.volume_up)),
+                    IconButton(
+                        onPressed: () {},
+                        color: Theme.of(context).colorScheme.onBackground,
+                        iconSize: 22,
+                        icon: const Icon(Icons.more_vert_rounded)),
+                  ],
+                )
+              ],
             ),
           ),
-          Align(
-            alignment: Alignment.topCenter,
+          Expanded(
             child: Container(
-              margin: const EdgeInsets.fromLTRB(10, 100, 10 ,10),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 200,
-                    height: 200,
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.width / 2,
+                    constraints: BoxConstraints(
+                      maxWidth: 500,
+                      maxHeight: 500,
+                    ),
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(30)),
@@ -657,103 +651,108 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                         ),
                       ],
                     ),
-                    child: Image.asset(
-                        "assets/images/music_player/music.jpg", fit: BoxFit.cover),
+                    child: Image.asset("assets/images/music_player/music.jpg",
+                        fit: BoxFit.cover),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 30),
-                    child: Text("Title",
-                      style: TextStyle(fontSize: 22,
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground),),
+                    child: Text(
+                      "Title",
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Theme.of(context).colorScheme.onBackground),
+                    ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 2),
-                    child: Text("Artist, Album",
-                      style: TextStyle(fontSize: 14,
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onBackground),),
+                    child: Text(
+                      "Artist, Album",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Theme.of(context).colorScheme.onBackground),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SizedBox(
-              height: boxController.isAttached ? boxController.maxHeight * 0.3 : null,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.music_note_list,
-                            color: Colors.white,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.heart,
-                            color: Colors.white,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.plus,
-                            color: Colors.white,)
-                      ),
-                    ],
+          Container(
+            height: height * 0.3,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.music_note_list,
+                          color: Colors.white,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.heart,
+                          color: Colors.white,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.plus,
+                          color: Colors.white,
+                        )),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: Slider(
+                    value: 0.2,
+                    inactiveColor: Colors.white.withAlpha(100),
+                    activeColor: Colors.white,
+                    thumbColor: Colors.white,
+                    onChanged: (double value) {},
+                    autofocus: true,
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 20),
-                    child: Slider(
-                      value: 0.2,
-                      inactiveColor: Colors.white.withAlpha(100),
-                      activeColor: Colors.white,
-                      thumbColor: Colors.white,
-                      onChanged: (double value) {  },
-                      autofocus: true,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.shuffle,
-                            color: Colors.white,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.backward_end_alt_fill,
-                            color: Colors.white,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.pause_solid,
-                            color: Colors.white,
-                            size: 40,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.forward_end_alt_fill,
-                            color: Colors.white,)
-                      ),
-                      IconButton(
-                          onPressed: () { },
-                          icon: const Icon(CupertinoIcons.repeat,
-                            color: Colors.white,)
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.shuffle,
+                          color: Colors.white,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.backward_end_alt_fill,
+                          color: Colors.white,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.pause_solid,
+                          color: Colors.white,
+                          size: 40,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.forward_end_alt_fill,
+                          color: Colors.white,
+                        )),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          CupertinoIcons.repeat,
+                          color: Colors.white,
+                        )),
+                  ],
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -762,7 +761,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   _collapsedBody() {
     return GestureDetector(
       onTap: () {
-        if(boxController.isBoxClosed) boxController.openBox();
+        if (boxController.isBoxClosed) boxController.openBox();
       },
       child: Container(
         color: const Color(0xFFFF850A),
@@ -776,20 +775,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(40)),
               ),
-              child: Image.asset(
-                  "assets/images/music_player/music.jpg", fit: BoxFit.cover),
+              child: Image.asset("assets/images/music_player/music.jpg",
+                  fit: BoxFit.cover),
             ),
             const Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Title",
-                    style: TextStyle(fontSize: 18,
-                        color: Colors.white ),),
-                  Text("Artist, Album",
-                    style: TextStyle(fontSize: 13,
-                        color: Colors.white),),
+                  Text(
+                    "Title",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  Text(
+                    "Artist, Album",
+                    style: TextStyle(fontSize: 13, color: Colors.white),
+                  ),
                 ],
               ),
             ),
@@ -799,25 +800,33 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               child: Row(
                 children: [
                   IconButton(
-                      onPressed: () { },
-                      icon: const Icon(CupertinoIcons.backward_end_alt_fill,
-                        size: 18, color: Colors.white,)
-                  ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        CupertinoIcons.backward_end_alt_fill,
+                        size: 18,
+                        color: Colors.white,
+                      )),
                   IconButton(
-                      onPressed: () { },
-                      icon: const Icon(CupertinoIcons.play_arrow_solid,
-                        size: 18, color: Colors.white,)
-                  ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        CupertinoIcons.play_arrow_solid,
+                        size: 18,
+                        color: Colors.white,
+                      )),
                   IconButton(
-                      onPressed: () { },
-                      icon: const Icon(CupertinoIcons.forward_end_alt_fill,
-                        size: 18, color: Colors.white,)
-                  ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        CupertinoIcons.forward_end_alt_fill,
+                        size: 18,
+                        color: Colors.white,
+                      )),
                   IconButton(
-                      onPressed: () { },
-                      icon: const Icon(CupertinoIcons.music_note_list,
-                        size: 18, color: Colors.white,)
-                  ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        CupertinoIcons.music_note_list,
+                        size: 18,
+                        color: Colors.white,
+                      )),
                 ],
               ),
             )
@@ -856,7 +865,8 @@ class MaterialListItem extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
         height: 75,
         splashColor: Theme.of(context).colorScheme.onBackground.withAlpha(50),
-        highlightColor: Theme.of(context).colorScheme.onBackground.withAlpha(50),
+        highlightColor:
+            Theme.of(context).colorScheme.onBackground.withAlpha(50),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         onPressed: onPressed,
         child: Column(
@@ -874,24 +884,24 @@ class MaterialListItem extends StatelessWidget {
                 ),
                 Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            margin: const EdgeInsets.only(left: 15, top: 0),
-                            child: title
-                        ),
-                        Container(
-                            margin: const EdgeInsets.only(left: 15, top: 0),
-                            child: description
-                        ),
-                      ],
-                    )
-                ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.only(left: 15, top: 0),
+                        child: title),
+                    Container(
+                        margin: const EdgeInsets.only(left: 15, top: 0),
+                        child: description),
+                  ],
+                )),
                 IconButton(
                   onPressed: onMorePressed,
                   icon: Icon(
                     Icons.more_vert_rounded,
-                    color: Theme.of(context).colorScheme.onBackground.withAlpha(100),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withAlpha(100),
                     size: 22,
                   ),
                 )

@@ -4,7 +4,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_sliding_box/flutter_sliding_box.dart';
 import 'package:latlong2/latlong.dart';
 
-void main() { runApp(const SlidingBoxExampleApp()); }
+void main() {
+  runApp(const SlidingBoxExampleApp());
+}
 
 class SlidingBoxExampleApp extends StatelessWidget {
   const SlidingBoxExampleApp({super.key});
@@ -30,8 +32,6 @@ class SlidingBoxExamplePage extends StatefulWidget {
 }
 
 class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
-
-
   final BoxController boxController = BoxController();
   final TextEditingController textEditingController = TextEditingController();
 
@@ -40,23 +40,22 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarIconBrightness: SlidingBoxExampleApp.themeMode ==
-            ThemeMode.light ? Brightness.dark : Brightness.light,
-        systemNavigationBarColor: Theme
-            .of(context)
-            .colorScheme
-            .background
-    ));
+        systemNavigationBarIconBrightness:
+            SlidingBoxExampleApp.themeMode == ThemeMode.light
+                ? Brightness.dark
+                : Brightness.light,
+        systemNavigationBarColor: Theme.of(context).colorScheme.background));
     //
     textEditingController.addListener(() {
-      boxController.setSearchBody(child: Center(
-        child: Text(textEditingController.text != ""
-            ? textEditingController.value.text : "Empty",
-          style: TextStyle(color: Theme
-              .of(context)
-              .colorScheme
-              .onBackground,
-              fontSize: 20),),
+      boxController.setSearchBody(
+          child: Center(
+        child: Text(
+          textEditingController.text != ""
+              ? textEditingController.value.text
+              : "Empty",
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground, fontSize: 20),
+        ),
       ));
     });
     //
@@ -64,51 +63,35 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
       body: SlidingBox(
         controller: boxController,
         minHeight: 200,
-        maxHeight: MediaQuery
-            .of(context)
-            .size
-            .height * 0.7,
-        color: Theme
-            .of(context)
-            .colorScheme
-            .background,
+        maxHeight: MediaQuery.of(context).size.height * 0.7,
+        color: Theme.of(context).colorScheme.background,
         style: BoxStyle.shadow,
         backdrop: Backdrop(
           overlay: true,
-          color: Theme
-              .of(context)
-              .colorScheme
-              .background,
+          color: Theme.of(context).colorScheme.background,
           body: _backdrop(),
           appBar: BackdropAppBar(
               searchBox: SearchBox(
                 controller: textEditingController,
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .background,
-                style: TextStyle(color:
-                Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground, fontSize: 18),
-                body: Center(child: Text("Search Result",
-                  style: TextStyle(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground,
-                      fontSize: 20),),),
+                color: Theme.of(context).colorScheme.background,
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 18),
+                body: Center(
+                  child: Text(
+                    "Search Result",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 20),
+                  ),
+                ),
                 draggableBody: true,
               ),
               actions: [
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 10, 10, 0),
                   decoration: BoxDecoration(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .primary,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       boxShadow: [
                         BoxShadow(
@@ -117,17 +100,14 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                           blurRadius: 4,
                           offset: const Offset(0, 2),
                         ),
-                      ]
-                  ),
+                      ]),
                   child: SizedBox.fromSize(
                     size: const Size.fromRadius(20),
                     child: IconButton(
                       iconSize: 25,
-                      icon: Icon(Icons.search_rounded, size: 27,
-                          color: Theme
-                              .of(context)
-                              .colorScheme
-                              .onPrimary),
+                      icon: Icon(Icons.search_rounded,
+                          size: 27,
+                          color: Theme.of(context).colorScheme.onPrimary),
                       onPressed: () {
                         textEditingController.text = "";
                         boxController.showSearchBox();
@@ -135,10 +115,9 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                     ),
                   ),
                 ),
-              ]
-          ),
+              ]),
         ),
-        body:_body(),
+        body: _body(),
         collapsed: true,
         collapsedBody: _collapsedBody(),
       ),
@@ -155,18 +134,16 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           ),
           children: [
             TileLayer(
-              urlTemplate:
-              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             ),
             MarkerLayer(markers: [
               Marker(
                   point: LatLng(51.5, -0.09),
-                  builder: (ctx) =>
-                  const Icon(
-                    Icons.location_pin,
-                    color: Colors.redAccent,
-                    size: 48.0,
-                  ),
+                  builder: (ctx) => const Icon(
+                        Icons.location_pin,
+                        color: Colors.redAccent,
+                        size: 48.0,
+                      ),
                   height: 60),
             ]),
           ],
@@ -178,7 +155,8 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             child: FloatingActionButton(
               onPressed: () {
                 boxController.isBoxOpen
-                    ? boxController.closeBox() : boxController.openBox();
+                    ? boxController.closeBox()
+                    : boxController.openBox();
               },
               child: const Icon(Icons.my_location),
             ),
@@ -199,48 +177,48 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-            child: Image.asset(
-                "assets/images/map/london.jpg", fit: BoxFit.fitWidth),
+            child: Image.asset("assets/images/map/london.jpg",
+                fit: BoxFit.fitWidth),
           ),
-          const SizedBox(height: 15,),
-          Text("About London",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21,
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground),),
-          Container(height: 1, color: Theme
-              .of(context)
-              .colorScheme
-              .onBackground
-              .withAlpha(100)),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 15,
+          ),
+          Text(
+            "About London",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 21,
+                color: Theme.of(context).colorScheme.onBackground),
+          ),
+          Container(
+              height: 1,
+              color: Theme.of(context).colorScheme.onBackground.withAlpha(100)),
+          const SizedBox(
+            height: 10,
+          ),
           Text(
             "London, the capital of England and the United Kingdom, "
-                "is a 21st-century city with history stretching back to "
-                "Roman times. At its centre stand the imposing Houses of "
-                "Parliament, the iconic ‘Big Ben’ clock tower and "
-                "Westminster Abbey, site of British monarch coronations. "
-                "Across the Thames River, the London Eye observation wheel "
-                "provides panoramic views of the South Bank cultural complex, "
-                "and the entire city.",
-            style: TextStyle(fontSize: 15,
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground),),
-          const SizedBox(height: 15,),
+            "is a 21st-century city with history stretching back to "
+            "Roman times. At its centre stand the imposing Houses of "
+            "Parliament, the iconic ‘Big Ben’ clock tower and "
+            "Westminster Abbey, site of British monarch coronations. "
+            "Across the Thames River, the London Eye observation wheel "
+            "provides panoramic views of the South Bank cultural complex, "
+            "and the entire city.",
+            style: TextStyle(
+                fontSize: 15,
+                color: Theme.of(context).colorScheme.onBackground),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             padding: const EdgeInsets.all(0),
             height: 50,
             decoration: BoxDecoration(
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .onBackground
-                  .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                  ? 20 : 40),
+              color: Theme.of(context).colorScheme.onBackground.withAlpha(
+                  SlidingBoxExampleApp.themeMode == ThemeMode.light ? 20 : 40),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Row(
@@ -248,26 +226,17 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
               children: [
                 IconButton(
                   onPressed: () {},
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
+                  color: Theme.of(context).colorScheme.onBackground,
                   icon: const Icon(Icons.share_outlined),
                 ),
                 IconButton(
                   onPressed: () {},
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
+                  color: Theme.of(context).colorScheme.onBackground,
                   icon: const Icon(Icons.add_location_alt_outlined),
                 ),
                 IconButton(
                   onPressed: () {},
-                  color: Theme
-                      .of(context)
-                      .colorScheme
-                      .onBackground,
+                  color: Theme.of(context).colorScheme.onBackground,
                   icon: const Icon(Icons.bookmark_border_rounded),
                 )
               ],
@@ -286,12 +255,8 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           padding: const EdgeInsets.all(10),
           height: 80,
           decoration: BoxDecoration(
-            color: Theme
-                .of(context)
-                .colorScheme
-                .onBackground
-                .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                ? 20 : 40),
+            color: Theme.of(context).colorScheme.onBackground.withAlpha(
+                SlidingBoxExampleApp.themeMode == ThemeMode.light ? 20 : 40),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: Row(
@@ -304,42 +269,46 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
                   borderRadius: BorderRadius.all(Radius.circular(60)),
                 ),
                 child: Image.asset(
-                  "assets/images/map/london.jpg", fit: BoxFit.cover,),
+                  "assets/images/map/london.jpg",
+                  fit: BoxFit.cover,
+                ),
               ),
               Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 15, top: 2),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(7)),
-                        ),
-                        child: Text("London",
-                          style: TextStyle(fontWeight: FontWeight.normal,
-                            color: Theme
-                                .of(context)
-                                .colorScheme
-                                .onBackground,
-                            fontSize: 21,),),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 15, top: 2),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                    ),
+                    child: Text(
+                      "London",
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 21,
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 15, top: 0),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(7)),
-                        ),
-                        child: Text("England, United Kingdom",
-                          style: TextStyle(fontWeight: FontWeight.normal,
-                              color: Theme
-                                  .of(context)
-                                  .colorScheme
-                                  .onBackground
-                                  .withAlpha(150),
-                              fontSize: 16),),
-                      ),
-                    ],
-                  )
-              ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 15, top: 0),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                    ),
+                    child: Text(
+                      "England, United Kingdom",
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withAlpha(150),
+                          fontSize: 16),
+                    ),
+                  ),
+                ],
+              )),
               const Icon(
                 Icons.location_pin,
                 color: Colors.redAccent,
@@ -353,12 +322,8 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
           padding: const EdgeInsets.all(0),
           height: 50,
           decoration: BoxDecoration(
-            color: Theme
-                .of(context)
-                .colorScheme
-                .onBackground
-                .withAlpha(SlidingBoxExampleApp.themeMode == ThemeMode.light
-                ? 20 : 40),
+            color: Theme.of(context).colorScheme.onBackground.withAlpha(
+                SlidingBoxExampleApp.themeMode == ThemeMode.light ? 20 : 40),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: Row(
@@ -366,26 +331,17 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
             children: [
               IconButton(
                 onPressed: () {},
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground,
+                color: Theme.of(context).colorScheme.onBackground,
                 icon: const Icon(Icons.share_outlined),
               ),
               IconButton(
                 onPressed: () {},
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground,
+                color: Theme.of(context).colorScheme.onBackground,
                 icon: const Icon(Icons.add_location_alt_outlined),
               ),
               IconButton(
                 onPressed: () {},
-                color: Theme
-                    .of(context)
-                    .colorScheme
-                    .onBackground,
+                color: Theme.of(context).colorScheme.onBackground,
                 icon: const Icon(Icons.bookmark_border_rounded),
               )
             ],
@@ -397,10 +353,7 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
 }
 
 class MyListItem extends StatelessWidget {
-  const MyListItem({
-    super.key
-  });
-
+  const MyListItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -409,11 +362,7 @@ class MyListItem extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       height: 80,
       decoration: BoxDecoration(
-        color: Theme
-            .of(context)
-            .colorScheme
-            .onBackground
-            .withAlpha(40),
+        color: Theme.of(context).colorScheme.onBackground.withAlpha(40),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Row(
@@ -422,49 +371,37 @@ class MyListItem extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .onBackground
-                  .withAlpha(60),
+              color: Theme.of(context).colorScheme.onBackground.withAlpha(60),
               borderRadius: const BorderRadius.all(Radius.circular(60)),
             ),
           ),
           Expanded(
               child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10, top: 5),
-                    height: 20,
-                    decoration: BoxDecoration(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(60),
-                      borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10, top: 9),
-                    height: 13,
-                    decoration: BoxDecoration(
-                      color: Theme
-                          .of(context)
-                          .colorScheme
-                          .onBackground
-                          .withAlpha(40),
-                      borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    ),
-                  ),
-                ],
-              )
-          ),
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 10, top: 5),
+                height: 20,
+                decoration: BoxDecoration(
+                  color:
+                      Theme.of(context).colorScheme.onBackground.withAlpha(60),
+                  borderRadius: const BorderRadius.all(Radius.circular(7)),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 10, top: 9),
+                height: 13,
+                decoration: BoxDecoration(
+                  color:
+                      Theme.of(context).colorScheme.onBackground.withAlpha(40),
+                  borderRadius: const BorderRadius.all(Radius.circular(7)),
+                ),
+              ),
+            ],
+          )),
         ],
       ),
     );
   }
-
 }
 
 class MaterialListItem extends StatelessWidget {
@@ -482,21 +419,19 @@ class MaterialListItem extends StatelessWidget {
       height: iconSizeHeight,
       child: MaterialButton(
         padding: const EdgeInsets.all(0),
-        minWidth: MediaQuery
-            .of(context)
-            .size
-            .height,
+        minWidth: MediaQuery.of(context).size.height,
         splashColor: Colors.white,
         highlightColor: Colors.white,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         onPressed: onPressed,
         child: Row(
           children: [
-            if(icon != null) SizedBox(
-              width: iconSizeHeight + 10,
-              height: iconSizeHeight,
-              child: icon,
-            ),
+            if (icon != null)
+              SizedBox(
+                width: iconSizeHeight + 10,
+                height: iconSizeHeight,
+                child: icon,
+              ),
             child,
           ],
         ),
