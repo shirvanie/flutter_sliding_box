@@ -19,7 +19,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
+  
+screenshots:
+  - description: 'Examples of the sliding box on Android.'
+    path: sliding_box_demo.webp
 
 flutter:
   uses-material-design: true
