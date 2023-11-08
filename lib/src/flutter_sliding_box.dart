@@ -988,6 +988,16 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     _boxState = boxState;
   }
 
+  /// Handles when a new position is passed as a drag externally
+  void onDragUpdate(double dy) {
+    _boxState?._onGestureUpdate(dy);
+  }
+
+  /// Handles when drag end event is passed as a drag externally
+  void onDragEnd(Velocity v) {
+    _boxState?._onGestureEnd(v);
+  }
+
   /// Determine if the [SlidingBox.controller] is attached to an instance of the
   /// [SlidingBox] (this property must be true before any other [BoxController]
   /// functions can be used)
