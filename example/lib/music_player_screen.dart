@@ -51,6 +51,12 @@ class _SlidingBoxExamplePageState extends State<SlidingBoxExamplePage> {
   }
 
   @override
+  void dispose() {
+    boxController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,

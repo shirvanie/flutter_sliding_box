@@ -259,14 +259,13 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     _backdropWidth = (widget.backdrop?.width != null)
         ? widget.backdrop!.width!
         : MediaQuery.of(context).size.width;
-    return WillPopScope(
-      onWillPop: () {
+    return PopScope(
+      canPop: !_isSearchBoxVisible,
+      onPopInvoked: (_) {
         /// handle app back button when [BackdropAppBar.searchBox] shows
         if (_isSearchBoxVisible) {
           widget.controller!.hideSearchBox();
-          return Future.value(false);
         }
-        return Future.value(true);
       },
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -1297,7 +1296,7 @@ Future<T?> showSlidingBox<T>({
 }
 
 Widget _slidingBoxModal(BuildContext context, SlidingBox box) {
-  BoxController controller = BoxController();
+  BoxController controller = box.controller ?? BoxController();
   Future.delayed(
       Duration.zero, () => controller.isAttached ? controller.openBox() : null);
   return Material(

@@ -3,10 +3,12 @@
 <img src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/cover.png"/>
 
 [![pub package](https://img.shields.io/pub/v/flutter_sliding_box.svg)](https://pub.dartlang.org/packages/flutter_sliding_box)
-[![GitHub Stars](https://img.shields.io/github/stars/shirvanie/flutter_sliding_box.svg?logo=github)](https://github.com/shirvanie/flutter_sliding_box)
+[![GitHub Stars](https://img.shields.io/github/stars/shirvanie/flutter_sliding_box.svg?logo=github)](https://github.com/shirvanie/flutter_sliding_box/stargazers)
 [![Platform](https://img.shields.io/badge/platform-all-green.svg)](https://img.shields.io/badge/platform-android%20|%20ios%20|%20linux%20|%20macos%20|%20web%20|%20windows-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shirvanie/flutter_sliding_box/blob/master/LICENSE)
 [![likes](https://img.shields.io/pub/likes/flutter_sliding_box?logo=flutter)](https://pub.dev/packages/flutter_sliding_box/score)
+[![points](https://img.shields.io/pub/points/flutter_sliding_box)](https://pub.dev/packages/flutter_sliding_box/score)
+[![popularity](https://img.shields.io/pub/popularity/flutter_sliding_box)](https://pub.dev/packages/flutter_sliding_box/score)
 
 A draggable flutter widget (like bottom sheet panel) that makes it easier to use a SlidingBox for all platform.
 Boxes can be customized with your content and placed in your app.
@@ -72,6 +74,17 @@ Source Link:
 example/lib/share_screen.dart
 </a>
 
+## 
+
+| <img width="150px" alt="Messenger application" src="https://raw.githubusercontent.com/shirvanie/flutter_sliding_box/master/screenshots/sliding_box_demo.GIF" style="box-shadow: 0px 0px 7px #cccccc;"/> |  
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+
+
+Source Link:
+<a href="https://github.com/shirvanie/flutter_messenger_clean_architecture">
+Messenger application
+</a>
+
 <br />
 
 # Getting Started
@@ -93,7 +106,7 @@ Add *flutter_sliding_box* as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_sliding_box: ^1.1.3
+  flutter_sliding_box: ^1.1.4
 ```
 
 import the plugin package to your dart code

@@ -4,13 +4,13 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.1 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_sliding_box: ^1.1.3
+  flutter_sliding_box: ^1.1.4
   flutter_map: ^4.0.0
   latlong2: ^0.8.0
 
@@ -19,10 +19,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  
-screenshots:
-  - description: 'Examples of the sliding box on Android.'
-    path: sliding_box_demo.webp
+
 
 flutter:
   uses-material-design: true

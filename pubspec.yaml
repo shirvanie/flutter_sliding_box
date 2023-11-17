@@ -1,5 +1,5 @@
 name: flutter_sliding_box
-version: 1.1.3
+version: 1.1.4
 repository: https://github.com/shirvanie/flutter_sliding_box/tree/master/
 issue_tracker: https://github.com/shirvanie/flutter_sliding_box/issues
 homepage: https://github.com/shirvanie/flutter_sliding_box
@@ -7,7 +7,7 @@ description: A draggable flutter widget (like bottom sheet panel) that makes it 
 email: ihamedshirvani@gmail.com
 
 environment:
-  sdk: '>=3.0.1 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -17,6 +17,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+screenshots:
+  - description: 'Example of the sliding box on Android.'
+    path: sliding_box_demo.webp
 
 flutter:
   uses-material-design: true
