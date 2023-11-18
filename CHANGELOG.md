@@ -1,4 +1,7 @@
 
+## [1.1.5] - 18 November, 2023
+- dart format fixed
+
 ## [1.1.4] - 11 November, 2023
 - bug fixed
 

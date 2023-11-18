@@ -7,104 +7,6 @@ LICENSE: https://github.com/shirvanie/flutter_sliding_box/blob/master/LICENSE
 import 'package:flutter/material.dart';
 
 class SlidingBox extends StatefulWidget {
-  /// It can be used to control the state of sliding box and search box
-  final BoxController? controller;
-
-  /// The [width] of the sliding box
-  final double? width;
-
-  /// The height of the sliding box when fully [collapsed]
-  final double? minHeight;
-
-  /// The height of the sliding box when fully opened
-  final double? maxHeight;
-
-  /// The [color] to fill the background of the sliding box
-  final Color? color;
-
-  /// The corners of the sliding box are rounded by this
-  final BorderRadius? borderRadius;
-
-  /// The styles behind of the sliding box that includes
-  /// shadow and sheet and none
-  final BoxStyle? style;
-
-  /// A widget that slides from [minHeight] to [maxHeight] and is placed on the
-  /// backdrop
-  final Widget? body;
-
-  /// Provides a ScrollController to attach to a scrollable widget in the box
-  /// and current box position. If [body] and [bodyBuilder] are both non-null,
-  /// [body] will be used
-  final Widget Function(
-    ScrollController scrollController,
-    double boxPosition,
-  )? bodyBuilder;
-
-  /// Gets a ScrollPhysic, the [physics] determines how the scroll view
-  /// continues to animate after the user stops dragging the scroll view
-  final ScrollPhysics? physics;
-
-  /// Allows toggling of draggability of the sliding box. if set this to false,
-  /// the sliding box cannot be dragged up or down
-  final bool? draggable;
-
-  /// A Icon Widget that is placed in top of the box.
-  /// Gets a IconData
-  final IconData? draggableIcon;
-
-  /// The color of the [draggableIcon].
-  /// the position of the icon is top of the box
-  final Color? draggableIconColor;
-
-  /// If set to false, the [draggableIcon] hides. Use the controller to
-  /// open and close sliding box by taps.
-  final bool? draggableIconVisible;
-
-  /// The color to fill the background of the [draggableIcon] icon.
-  /// the position of the icon is top of the box
-  final Color? draggableIconBackColor;
-
-  /// If set to true, the state of the box is [collapsed]
-  final bool? collapsed;
-
-  /// The Widget displayed overtop the box when [collapsed].
-  /// This fades out as the sliding box is opened
-  final Widget? collapsedBody;
-
-  /// The [animationCurve] defines the easier behavior of the box animation
-  final Curve? animationCurve;
-
-  /// The [animationDuration] defines the time for the box animation to complete
-  final Duration? animationDuration;
-
-  /// A Widget that is placed under the box, the value should be filled with
-  /// the [Backdrop] object
-  final Backdrop? backdrop;
-
-  /// This callback is called when the sliding box slides around with position
-  /// of the box. the position is a double value between 0.0 and 1.0,
-  /// where 0.0 is fully collapsed and 1.0 is fully opened
-  final void Function(double position)? onBoxSlide;
-
-  /// This callback is called when the sliding box is fully closed
-  final VoidCallback? onBoxClose;
-
-  /// This callback is called when the sliding box is fully opened
-  final VoidCallback? onBoxOpen;
-
-  /// This callback is called when the sliding box is invisible
-  final VoidCallback? onBoxHide;
-
-  /// This callback is called when the sliding box is visible
-  final VoidCallback? onBoxShow;
-
-  /// This callback is called when the search box is invisible
-  final VoidCallback? onSearchBoxHide;
-
-  /// This callback is called when the search box is visible
-  final VoidCallback? onSearchBoxShow;
-
   SlidingBox({
     super.key,
     this.controller,
@@ -145,6 +47,104 @@ class SlidingBox extends StatefulWidget {
           backdrop?.appBar?.searchBox == null || controller != null,
           "controller must not be null",
         );
+
+  /// It can be used to control the state of sliding box and search box.
+  final BoxController? controller;
+
+  /// The [width] of the sliding box.
+  final double? width;
+
+  /// The height of the sliding box when fully [collapsed].
+  final double? minHeight;
+
+  /// The height of the sliding box when fully opened.
+  final double? maxHeight;
+
+  /// The [color] to fill the background of the sliding box.
+  final Color? color;
+
+  /// The corners of the sliding box are rounded by this.
+  final BorderRadius? borderRadius;
+
+  /// The styles behind of the sliding box that includes shadow, sheet, none.
+  final BoxStyle? style;
+
+  /// A widget that slides from [minHeight] to [maxHeight] and is placed on the
+  /// backdrop.
+  final Widget? body;
+
+  /// Provides a ScrollController to attach to a scrollable widget in the box
+  /// and current box position. If [body] and [bodyBuilder] are both non-null,
+  /// [body] will be used.
+  final Widget Function(
+    ScrollController scrollController,
+    double boxPosition,
+  )? bodyBuilder;
+
+  /// Gets a ScrollPhysic, the [physics] determines how the scroll view
+  /// continues to animate after the user stops dragging the scroll view.
+  final ScrollPhysics? physics;
+
+  /// Allows toggling of draggability of the sliding box. if set this to false,
+  /// the sliding box cannot be dragged up or down.
+  final bool? draggable;
+
+  /// A Icon Widget that is placed in top of the box.
+  /// Gets a IconData.
+  final IconData? draggableIcon;
+
+  /// The color of the [draggableIcon].
+  /// the position of the icon is top of the box.
+  final Color? draggableIconColor;
+
+  /// If set to false, the [draggableIcon] hides. Use the controller to
+  /// open and close sliding box by taps.
+  final bool? draggableIconVisible;
+
+  /// The color to fill the background of the [draggableIcon] icon.
+  /// the position of the icon is top of the box.
+  final Color? draggableIconBackColor;
+
+  /// If set to true, the state of the box is [collapsed].
+  final bool? collapsed;
+
+  /// The Widget displayed overtop the box when [collapsed].
+  /// This fades out as the sliding box is opened.
+  final Widget? collapsedBody;
+
+  /// The [animationCurve] defines the easier behavior of the box animation.
+  final Curve? animationCurve;
+
+  /// The [animationDuration] defines the time for the box animation to
+  /// complete.
+  final Duration? animationDuration;
+
+  /// A Widget that is placed under the box, the value should be filled with
+  /// the [Backdrop] object.
+  final Backdrop? backdrop;
+
+  /// This callback is called when the sliding box slides around with position
+  /// of the box. the position is a double value between 0.0 and 1.0,
+  /// where 0.0 is fully collapsed and 1.0 is fully opened.
+  final ValueChanged<double>? onBoxSlide;
+
+  /// This callback is called when the sliding box is fully closed.
+  final VoidCallback? onBoxClose;
+
+  /// This callback is called when the sliding box is fully opened.
+  final VoidCallback? onBoxOpen;
+
+  /// This callback is called when the sliding box is invisible.
+  final VoidCallback? onBoxHide;
+
+  /// This callback is called when the sliding box is visible.
+  final VoidCallback? onBoxShow;
+
+  /// This callback is called when the search box is invisible.
+  final VoidCallback? onSearchBoxHide;
+
+  /// This callback is called when the search box is visible.
+  final VoidCallback? onSearchBoxShow;
 
   @override
   State<SlidingBox> createState() => _SlidingBoxState();
@@ -262,7 +262,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     return PopScope(
       canPop: !_isSearchBoxVisible,
       onPopInvoked: (_) {
-        /// handle app back button when [BackdropAppBar.searchBox] shows
+        /// handle app back button when [BackdropAppBar.searchBox] shows.
         if (_isSearchBoxVisible) {
           widget.controller!.hideSearchBox();
         }
@@ -277,7 +277,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     );
   }
 
-  /// Returns a Widget that placed in [Backdrop.body]
+  /// Returns a Widget that placed in [Backdrop.body].
   Widget _backdrop() {
     return _gestureHandler(
       dragUpdate: widget.draggable!,
@@ -530,7 +530,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     );
   }
 
-  /// Returns a Widget that placed in [SlidingBox.body]
+  /// Returns a Widget that placed in [SlidingBox.body].
   Widget _body() {
     return _gestureHandler(
       dragUpdate: widget.draggable!,
@@ -708,7 +708,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     );
   }
 
-  /// Returns a gesture detector when user dragging on the box or backdrop
+  /// Returns a gesture detector when user dragging on the box or backdrop.
   Widget _gestureHandler({
     required Widget child,
     bool dragUpdate = false,
@@ -727,7 +727,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     );
   }
 
-  /// handles when user dragging the sliding box
+  /// handles when user dragging the sliding box.
   void _onGestureUpdate(double dy) {
     if (_isBoxAnimating == true) return;
     if (_isSearchBoxVisible &&
@@ -748,7 +748,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     }
   }
 
-  /// handles when user stops sliding
+  /// handles when user stops sliding.
   void _onGestureEnd(Velocity v) {
     if (_isBoxAnimating == true) return;
     if (_isSearchBoxVisible &&
@@ -812,7 +812,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     }
   }
 
-  /// handles when user tap on sliding box
+  /// handles when user tap on sliding box.
   void _onGestureTap() {
     if (_isBoxAnimating == true) return;
     if (_isSearchBoxVisible &&
@@ -826,7 +826,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
   ///BoxController related functions
   ///---------------------------------
 
-  /// Closes the sliding box with animation (i.e. to the SlidingBox.maxHeight)
+  /// Closes the sliding box with animation (i.e. to the SlidingBox.maxHeight).
   Future<void> _closeBox() async {
     if (!_isBoxVisible) return;
     return _animationController.fling(velocity: -1.0).then((_) {
@@ -838,7 +838,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Opens the sliding box with animation (i.e. to the [SlidingBox.maxHeight])
+  /// Opens the sliding box with animation (i.e. to the [SlidingBox.maxHeight]).
   Future<void> _openBox() async {
     if (!_isBoxVisible) return;
     return _animationController.fling(velocity: 1.0).then((_) {
@@ -848,7 +848,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Hides [SlidingBox.body] (i.e. is invisible)
+  /// Hides [SlidingBox.body] (i.e. is invisible).
   Future<void> _hideBox() {
     return _animationController.fling(velocity: -1.0).then((_) {
       setState(() {
@@ -861,7 +861,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Shows [SlidingBox.body] (i.e. is visible)
+  /// Shows [SlidingBox.body] (i.e. is visible).
   Future<void> _showBox() {
     setState(() {
       _isBoxVisible = true;
@@ -874,7 +874,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Hides [BackdropAppBar.searchBox] (i.e. is invisible)
+  /// Hides [BackdropAppBar.searchBox] (i.e. is invisible).
   Future<void> _hideSearchBox() async {
     if (widget.onSearchBoxHide != null) {
       widget.onSearchBoxHide!.call();
@@ -886,7 +886,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Shows [BackdropAppBar.searchBox] (i.e. is visible)
+  /// Shows [BackdropAppBar.searchBox] (i.e. is visible).
   Future<void> _showSearchBox() async {
     _openBox();
     setState(() {
@@ -899,7 +899,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     return _opacityAnimationController.fling(velocity: 1.0);
   }
 
-  /// Closes [BackdropAppBar.searchBox]
+  /// Closes [BackdropAppBar.searchBox].
   Future<void> _closeSearchBox() async {
     if (_isSearchBoxVisible) {
       _opacityAnimationController.reverse().then((_) {
@@ -914,14 +914,14 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     }
   }
 
-  /// Sets current box [SlidingBox.body] with search result
+  /// Sets current box [SlidingBox.body] with search result.
   Future<void> _setSearchBody(Widget child) async {
     setState(() {
       _searchBody = child;
     });
   }
 
-  /// Sets current box position
+  /// Sets current box position.
   Future<void> _setPosition(double value) {
     assert(0.0 <= value && value <= 1.0);
     return _animateBoxToPosition(value).then((_) {
@@ -929,7 +929,7 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     });
   }
 
-  /// Animate the box position to value - value must between 0.0 and 1.0
+  /// Animate the box position to value - value must between 0.0 and 1.0.
   Future<void> _animateBoxToPosition(double value) {
     assert(0.0 <= value && value <= 1.0);
     _closeSearchBox();
@@ -940,32 +940,32 @@ class _SlidingBoxState extends State<SlidingBox> with TickerProviderStateMixin {
     );
   }
 
-  /// Sets current box position
+  /// Sets current box position.
   set _boxPosition(double value) {
     assert(0.0 <= value && value <= 1.0);
     _animationController.value = value;
   }
 
-  /// Gets current box position
+  /// Gets current box position.
   double get _boxPosition => _animationController.value;
 
-  /// Gets current box [SlidingBox.minHeight]
+  /// Gets current box [SlidingBox.minHeight].
   double get _minHeight => widget.minHeight!;
 
-  /// Gets current box [SlidingBox.maxHeight]
+  /// Gets current box [SlidingBox.maxHeight].
   double get _maxHeight => widget.maxHeight!;
 
-  /// Gets current box [SlidingBox.width]
+  /// Gets current box [SlidingBox.width].
   double get _boxBodyWidth => _boxWidth;
 
-  /// Gets current box [Backdrop.width]
+  /// Gets current box [Backdrop.width].
   double get _backdropBodyWidth => _backdropWidth;
 }
 
 class MenuIconValue {
-  final bool? isOpenMenuIcon;
-
   const MenuIconValue({this.isOpenMenuIcon = false});
+
+  final bool? isOpenMenuIcon;
 
   /// Create a value with close icon menu state.
   factory MenuIconValue.closeMenu() {
@@ -979,9 +979,9 @@ class MenuIconValue {
 }
 
 class BoxController extends ValueNotifier<MenuIconValue> {
-  _SlidingBoxState? _boxState;
-
   BoxController() : super(const MenuIconValue());
+
+  _SlidingBoxState? _boxState;
 
   void _addState(_SlidingBoxState boxState) {
     _boxState = boxState;
@@ -989,10 +989,11 @@ class BoxController extends ValueNotifier<MenuIconValue> {
 
   /// Determine if the [SlidingBox.controller] is attached to an instance of the
   /// [SlidingBox] (this property must be true before any other [BoxController]
-  /// functions can be used)
+  /// functions can be used).
   bool get isAttached => _boxState != null;
 
-  /// Closes the sliding box with animation (i.e. to the [SlidingBox.minHeight])
+  /// Closes the sliding box with animation.
+  /// (i.e. to the [SlidingBox.minHeight]).
   Future<void> closeBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1003,7 +1004,8 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Opens the sliding box with animation (i.e. to the [SlidingBox.maxHeight])
+  /// Opens the sliding box with animation.
+  /// (i.e. to the [SlidingBox.maxHeight]).
   Future<void> openBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1014,7 +1016,7 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Hides the sliding box (i.e. is invisible)
+  /// Hides the sliding box (i.e. is invisible).
   Future<void> hideBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1024,7 +1026,7 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Shows the sliding box (i.e. is visible)
+  /// Shows the sliding box (i.e. is visible).
   Future<void> showBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1034,7 +1036,7 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Hides the search box (i.e. is invisible)
+  /// Hides the search box (i.e. is invisible).
   Future<void> hideSearchBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1047,7 +1049,7 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Shows the search box (i.e. is visible)
+  /// Shows the search box (i.e. is visible).
   Future<void> showSearchBox() async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1057,7 +1059,8 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Sets the sliding box position with animation (a value between 0.0 and 1.0)
+  /// Sets the sliding box position with animation.
+  /// (a value between 0.0 and 1.0).
   Future<void> setSearchBody({required Widget child}) async {
     try {
       assert(isAttached, "BoxController must be attached to a SlidingBox");
@@ -1077,55 +1080,55 @@ class BoxController extends ValueNotifier<MenuIconValue> {
     }
   }
 
-  /// Returns current box position (a value between 0.0 and 1.0)
+  /// Returns current box position (a value between 0.0 and 1.0).
   double get getPosition {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._boxPosition;
   }
 
-  /// Returns whether or not the box is open
+  /// Returns whether or not the box is open.
   bool get isBoxOpen {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._isBoxOpen;
   }
 
-  /// Returns whether or not the search box is visible
+  /// Returns whether or not the search box is visible.
   bool get isSearchBoxVisible {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._isSearchBoxVisible;
   }
 
-  /// Returns whether or not the box is close or collapsed
+  /// Returns whether or not the box is close or collapsed.
   bool get isBoxClosed {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return !_boxState!._isBoxOpen;
   }
 
-  /// Returns whether or not the box is visible
+  /// Returns whether or not the box is visible.
   bool get isBoxVisible {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._isBoxVisible;
   }
 
-  /// Returns current box [SlidingBox.minHeight]
+  /// Returns current box [SlidingBox.minHeight].
   double get minHeight {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._minHeight;
   }
 
-  /// Returns current box [SlidingBox.maxHeight]
+  /// Returns current box [SlidingBox.maxHeight].
   double get maxHeight {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._maxHeight;
   }
 
-  /// Returns current box [SlidingBox.width]
+  /// Returns current box [SlidingBox.width].
   double get boxWidth {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._boxBodyWidth;
   }
 
-  /// Returns current backdrop box [Backdrop.width]
+  /// Returns current backdrop box [Backdrop.width].
   double get backdropWidth {
     assert(isAttached, "BoxController must be attached to a SlidingBox");
     return _boxState!._backdropBodyWidth;
@@ -1139,37 +1142,6 @@ enum BoxStyle {
 }
 
 class Backdrop {
-  /// The width of the backdrop [body]
-  final double? width;
-
-  /// If set to true, the backdrop [body] moving up when the sliding box opened
-  final bool? moving;
-
-  /// If set to true, the backdrop [body] fades out when the sliding box opened
-  final bool? fading;
-
-  /// If set to true, a dark layer displayed overtop the backdrop when
-  /// sliding box opened
-  final bool? overlay;
-
-  /// The value of the dark layer overtop the backdrop. a double value between
-  /// 0.0 and 1.0
-  final double? overlayOpacity;
-
-  /// The [color] to fill the background of the backdrop [body]
-  final Color? color;
-
-  /// The gradient color to fill the background of the backdrop. if [color] and
-  /// [backgroundGradient] are both non-null, [color] will be used
-  final Gradient? backgroundGradient;
-
-  /// An app bar to display at the top of the [SlidingBox.backdrop]
-  final BackdropAppBar? appBar;
-
-  /// A Widget that is placed in the [SlidingBox.backdrop] and behind
-  /// the sliding box
-  final Widget? body;
-
   const Backdrop({
     this.width,
     this.fading = false,
@@ -1186,59 +1158,63 @@ class Backdrop {
               overlayOpacity <= 1.0,
           "overlayOpacity double value must between 0.0 and 1.0",
         );
+
+  /// The width of the backdrop [body].
+  final double? width;
+
+  /// If set to true, the backdrop [body] moving up when the sliding box opened.
+  final bool? moving;
+
+  /// If set to true, the backdrop [body] fades out when the sliding box opened.
+  final bool? fading;
+
+  /// If set to true, a dark layer displayed overtop the backdrop when
+  /// sliding box opened.
+  final bool? overlay;
+
+  /// The value of the dark layer overtop the backdrop. a double value between
+  /// 0.0 and 1.0.
+  final double? overlayOpacity;
+
+  /// The [color] to fill the background of the backdrop [body].
+  final Color? color;
+
+  /// The gradient color to fill the background of the backdrop. if [color] and
+  /// [backgroundGradient] are both non-null, [color] will be used.
+  final Gradient? backgroundGradient;
+
+  /// An app bar to display at the top of the [SlidingBox.backdrop].
+  final BackdropAppBar? appBar;
+
+  /// A Widget that is placed in the [SlidingBox.backdrop] and behind
+  /// the sliding box.
+  final Widget? body;
 }
 
 class BackdropAppBar {
-  /// A Widget that is placed on the topLeft of the [SlidingBox.backdrop]
-  final Widget? title;
-
-  /// A [Icon] Widget that is placed in left of the BackdropAppBar [title]
-  final Icon? leading;
-
-  /// An search box to display at the top of the [SlidingBox.backdrop].
-  /// if non-null, an search Icon displayed on topRight of the backdrop
-  final SearchBox? searchBox;
-
-  /// A list of Widgets that is placed on the topRight of the
-  /// [SlidingBox.backdrop]
-  final List<Widget>? actions;
-
   const BackdropAppBar({
     this.title,
     this.leading,
     this.searchBox,
     this.actions,
   });
+
+  /// A Widget that is placed on the topLeft of the [SlidingBox.backdrop].
+  final Widget? title;
+
+  /// A [Icon] Widget that is placed in left of the BackdropAppBar [title].
+  final Icon? leading;
+
+  /// An search box to display at the top of the [SlidingBox.backdrop].
+  /// if non-null, an search Icon displayed on topRight of the backdrop.
+  final SearchBox? searchBox;
+
+  /// A list of Widgets that is placed on the topRight of the
+  /// [SlidingBox.backdrop].
+  final List<Widget>? actions;
 }
 
 class SearchBox {
-  /// It can be used to control the state of search box text field.
-  /// gets a [TextEditingController]
-  final TextEditingController controller;
-
-  /// A `Icon` Widget that is placed in left of the search box text field
-  final Icon? leading;
-
-  /// The `color` to fill the background of the [SearchBox]
-  final Color? color;
-
-  /// The `decoration` to show around the search box text field
-  final InputDecoration? inputDecoration;
-
-  /// The corners of the search box are rounded by this
-  final BorderRadius? borderRadius;
-
-  /// The `style` to use for the text being edited
-  final TextStyle? style;
-
-  /// A Widget that is placed in the sliding box and under the searching box
-  final Widget? body;
-
-  /// Allows toggling of draggability of the sliding box. if set this to false,
-  /// the sliding box cannot be dragged up or down when search box visible.
-  /// if set this to true, search box invisible when dragging
-  final bool? draggableBody;
-
   const SearchBox({
     required this.controller,
     this.leading = const Icon(Icons.arrow_back_ios_rounded),
@@ -1257,6 +1233,33 @@ class SearchBox {
     this.body,
     this.draggableBody = true,
   });
+
+  /// It can be used to control the state of search box text field.
+  /// gets a [TextEditingController]
+  final TextEditingController controller;
+
+  /// A `Icon` Widget that is placed in left of the search box text field.
+  final Icon? leading;
+
+  /// The `color` to fill the background of the [SearchBox].
+  final Color? color;
+
+  /// The `decoration` to show around the search box text field.
+  final InputDecoration? inputDecoration;
+
+  /// The corners of the search box are rounded by this.
+  final BorderRadius? borderRadius;
+
+  /// The `style` to use for the text being edited.
+  final TextStyle? style;
+
+  /// A Widget that is placed in the sliding box and under the searching box.
+  final Widget? body;
+
+  /// Allows toggling of draggability of the sliding box. if set this to false,
+  /// the sliding box cannot be dragged up or down when search box visible.
+  /// if set this to true, search box invisible when dragging.
+  final bool? draggableBody;
 }
 
 Future<T?> showSlidingBox<T>({
